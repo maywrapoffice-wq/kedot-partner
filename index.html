@@ -86,6 +86,11 @@ body.is-dark .steps button[aria-current="step"]{color:var(--chartext);background
 .chip.or{background:var(--orange);color:#fff}
 .chip.lo{background:var(--lo)}
 .chips{display:flex;flex-wrap:wrap;gap:10px}
+.gate-sub{font-size:16px;font-weight:600;color:var(--sub);margin-top:6px}
+.gate-sub b{color:var(--orange);font-weight:800}
+.gate-list{list-style:none;display:grid;gap:10px;margin-top:14px}
+.gate-list li{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:800}
+.gate-list svg{flex:none;width:26px;height:26px}
 .ph{border:3px dashed var(--orange);background:var(--tint);border-radius:18px;display:flex;align-items:flex-end;padding:14px;min-height:180px;max-width:100%}
 .ph span{font-size:12px;font-weight:800;color:var(--orange);background:var(--bg);border-radius:999px;padding:5px 12px}
 
@@ -578,11 +583,12 @@ form{display:grid;gap:12px}
    </svg>
    <div>
     <h3>6주를 마친 분만 열리는 문</h3>
-    <div class="chips">
-     <span class="chip a-pop" style="--d:2.3s">공유 주방</span>
-     <span class="chip a-pop" style="--d:2.45s">케닷 브랜드</span>
-     <span class="chip or a-pop" style="--d:2.6s">실제 단체주문</span>
-    </div>
+    <p class="gate-sub"><b>세 가지 모두</b> 함께 열려요</p>
+    <ul class="gate-list">
+     <li class="a-up" style="--d:2.3s"><svg><use href="#v"/></svg>공유 주방</li>
+     <li class="a-up" style="--d:2.45s"><svg><use href="#v"/></svg>케닷 브랜드</li>
+     <li class="a-up" style="--d:2.6s"><svg><use href="#v"/></svg>실제 단체주문</li>
+    </ul>
    </div>
   </div>
 
