@@ -171,6 +171,16 @@ body.is-dark .steps button[aria-current="step"]{color:var(--chartext);background
 .mover{position:absolute;z-index:2;width:46px;height:36px;left:0;top:0;transition:left .7s ease,top .7s ease;pointer-events:none}
 .flow-ctl{margin-top:20px;text-align:center}
 .flow-ctl button{border:2px solid var(--ink);background:var(--white);border-radius:999px;padding:6px 16px;font-size:13px;font-weight:700;cursor:pointer}
+.nocost h3{font-size:clamp(22px,2.6vw,30px);font-weight:900}
+.nocost ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.nocost li{background:var(--white);border:3px solid var(--ink);border-radius:20px;padding:18px 14px;text-align:center;min-width:0}
+.nocost .x-wrap{position:relative;display:inline-block}
+.nocost .x-wrap>svg{width:64px;height:64px;opacity:.55}
+.nocost .nx{position:absolute;left:-10px;top:-10px;width:28px;height:28px}
+.nocost .nx svg{width:28px;height:28px}
+.nocost h4{font-size:17px;font-weight:900;margin-top:6px;text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px}
+.nocost p{font-size:14px;font-weight:700;color:var(--orange);margin-top:4px}
+@media (max-width:760px){.nocost ul{grid-template-columns:1fr}.nocost li{display:grid;grid-template-columns:64px 1fr;gap:2px 14px;text-align:left;align-items:center}.nocost .x-wrap{grid-row:span 2}.nocost h4{margin-top:0}}
 .lv{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:end}
 .lv>div{min-width:0}
 .lv h3{font-size:clamp(22px,2.6vw,30px);font-weight:900}
@@ -512,6 +522,15 @@ form{display:grid;gap:12px}
     <li class="fs"><div class="ic"><svg viewBox="0 0 120 120"><use href="#coins"/></svg></div><div><h3>정산</h3><p>일한 만큼 받아요</p></div></li>
    </ol>
    <div class="flow-ctl"><button type="button" id="flowBtn">멈춤</button></div>
+  </div>
+
+  <div class="nocost block">
+   <h3>가게 차릴 때 드는 것, <span class="o">여기선 필요 없어요</span></h3>
+   <ul>
+    <li class="a-up" style="--d:.2s"><span class="x-wrap"><svg viewBox="0 0 200 180"><use href="#shop"/></svg><b class="nx"><svg><use href="#x"/></svg></b></span><h4>가게 계약·인테리어</h4><p>공유 주방에서 바로 시작</p></li>
+    <li class="a-up" style="--d:.35s"><span class="x-wrap"><svg viewBox="0 0 120 120"><use href="#pot"/></svg><b class="nx"><svg><use href="#x"/></svg></b></span><h4>장보기·재료 준비</h4><p>재료는 케닷이 준비해요</p></li>
+    <li class="a-up" style="--d:.5s"><span class="x-wrap"><svg viewBox="0 0 120 90"><use href="#box"/></svg><b class="nx"><svg><use href="#x"/></svg></b></span><h4>브랜드·포장 만들기</h4><p>케닷 브랜드와 특허받은 케닷박스로</p></li>
+   </ul>
   </div>
 
   <div class="lv block">
