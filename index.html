@@ -86,6 +86,9 @@ body.is-dark .steps button[aria-current="step"]{color:var(--chartext);background
 .chip.or{background:var(--orange);color:#fff}
 .chip.lo{background:var(--lo)}
 .chips{display:flex;flex-wrap:wrap;gap:10px}
+.ticks{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
+.ticks li{display:flex;align-items:center;gap:7px;font-size:17px;font-weight:800;white-space:nowrap}
+.ticks svg{flex:none;width:22px;height:22px}
 .gate-sub{font-size:16px;font-weight:600;color:var(--sub);margin-top:6px}
 .gate-sub b{color:var(--orange);font-weight:800}
 .gate-list{list-style:none;display:grid;gap:10px;margin-top:14px}
@@ -628,7 +631,7 @@ form{display:grid;gap:12px}
   <div class="lv block">
    <div>
     <h3>주문 크기는<br>실력 따라 <span class="o">한 단계씩</span></h3>
-    <div class="chips mine"><span class="chip lo">더 많은 주문은 내 홍보로</span><span class="chip">목요일 마케팅 데이</span></div>
+    <ul class="ticks mine"><li><svg><use href="#v"/></svg>더 많은 주문은 내 홍보로</li><li><svg><use href="#v"/></svg>목요일 마케팅 데이</li></ul>
    </div>
    <div class="stacks" id="stacks"></div>
   </div>
@@ -689,7 +692,7 @@ form{display:grid;gap:12px}
    <button type="button" class="chip c1 a-pop gain" style="--d:.3s" data-gain="mk" aria-expanded="false" aria-controls="gainBox">마케팅<i aria-hidden="true">+</i></button>
    <button type="button" class="chip c2 a-pop gain" style="--d:.5s" data-gain="cs" aria-expanded="false" aria-controls="gainBox">상담·견적<i aria-hidden="true">+</i></button>
    <button type="button" class="chip c3 a-pop gain" style="--d:.7s" data-gain="ck" aria-expanded="false" aria-controls="gainBox">요리 실력<i aria-hidden="true">+</i></button>
-   <button type="button" class="chip or c4 a-pop gain" style="--d:.9s" data-gain="cu" aria-expanded="false" aria-controls="gainBox">내 고객<i aria-hidden="true">+</i></button>
+   <button type="button" class="chip c4 a-pop gain" style="--d:.9s" data-gain="cu" aria-expanded="false" aria-controls="gainBox">내 고객<i aria-hidden="true">+</i></button>
   </div>
   <div class="gain-box" id="gainBox" role="region" aria-live="polite" hidden></div>
 
@@ -725,11 +728,7 @@ form{display:grid;gap:12px}
    <div>
     <h3>어느 길이든 <span class="o">혼자가 아니에요</span></h3>
     <p class="crew-say">108평 공유 주방에 내 지문을 등록해 드려요.<br>내가 정한 날, 주방에 나와 만들어서 출고해요.</p>
-    <div class="chips">
-     <span class="chip or">소속감</span>
-     <span class="chip">매달 커피챗</span>
-     <span class="chip">타운홀 미팅</span>
-    </div>
+    <ul class="ticks"><li><svg><use href="#v"/></svg>소속감</li><li><svg><use href="#v"/></svg>매달 커피챗</li><li><svg><use href="#v"/></svg>타운홀 미팅</li></ul>
    </div>
   </div>
 
