@@ -215,15 +215,25 @@ body.is-dark .steps button[aria-current="step"]{color:var(--chartext);background
 .burst .c3{left:2%;bottom:10%}
 .burst .c4{right:2%;bottom:6%}
 .fork{position:relative}
+.part{display:flex;align-items:center;gap:12px;font-size:clamp(19px,2vw,23px);font-weight:900;letter-spacing:-.02em}
+.part b{flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:16px}
+.span{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px}
+.span .bar{position:relative;height:8px;border-radius:4px;background:var(--line);min-width:0}
+.span .bar i{position:absolute;inset:0;border-radius:4px;background:var(--orange);transform-origin:left;transform:scaleX(1)}
+.play .span .bar i{animation:grow 1s ease both;animation-delay:1s}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.span .bar em{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);white-space:nowrap;font-style:normal;font-size:14px;font-weight:800;color:var(--sub)}
+.span .after-pill{font-size:18px}
 .after{position:relative;z-index:1;width:max-content;margin:0 auto -10px;background:var(--orange);color:#fff;border:3px solid var(--ink);border-radius:999px;padding:8px 22px;font-size:clamp(20px,2.4vw,26px);font-weight:900;letter-spacing:-.02em;line-height:1.2}
 .road{width:100%;height:auto;display:block}
 .road path{stroke-dasharray:var(--len);stroke-dashoffset:0}
 .play .road path{animation:draw 1s ease both;animation-delay:var(--d)}
-.ways{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
-.way{background:var(--white);border:3px solid var(--ink);border-radius:20px;padding:18px 14px;text-align:center;min-width:0}
+.ways{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px}
+.way{position:relative;background:var(--white);border:3px solid var(--ink);border-radius:20px;padding:22px 14px 18px;text-align:center;min-width:0}
+.way .n{position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;background:var(--orange);color:#fff;border:3px solid var(--ink);display:grid;place-items:center;font-size:16px;font-weight:900}
 .way svg{width:72px;height:72px}
 .way h4{font-size:18px;font-weight:900;margin-top:8px;letter-spacing:-.02em}
-.way p{font-size:13px;color:var(--sub);font-weight:600;margin-top:2px}
+.way p{font-size:15px;color:var(--sub);font-weight:600;margin-top:6px;line-height:1.5}
 .crew{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);align-items:center}
 .crew>div{min-width:0}
 .crowd{display:flex;justify-content:center;align-items:flex-end}
@@ -315,10 +325,14 @@ form{display:grid;gap:12px}
   .fs{display:grid;grid-template-columns:128px 1fr;gap:18px;align-items:center;text-align:left}
   .fs h3{margin-top:0}
   .gal{grid-template-columns:1fr 1fr}.gal .shot:first-child{grid-column:1/-1}.gal .shot:first-child img{aspect-ratio:16/10}.gal .shot img{aspect-ratio:3/4}
-  .ways{grid-template-columns:1fr}
-  .way{display:grid;grid-template-columns:64px 1fr;gap:2px 14px;text-align:left;align-items:center}
-  .way svg{grid-row:span 2;width:64px;height:64px}
+  .road{display:none}
+  .ways{grid-template-columns:1fr;gap:20px;margin-top:20px}
+  .way{display:grid;grid-template-columns:56px 1fr;gap:2px 14px;text-align:left;align-items:center;padding:18px 16px 16px 22px}
+  .way .n{top:-14px;left:16px;transform:none}
+  .way svg{grid-row:span 2;width:56px;height:56px}
   .way h4{margin-top:0}
+  .way p br{display:none}
+  .span .bar em{font-size:12px}
   .row2{grid-template-columns:1fr}
   .next{padding:16px 22px;font-size:17px}
   .modal-box dl{grid-template-columns:1fr;gap:2px}.modal-box dd{margin-bottom:10px}
@@ -521,37 +535,45 @@ form{display:grid;gap:12px}
    <figure class="shot a-up" style="--d:.5s"><img src="img/boxes.jpg" alt="케닷 브랜드 박스가 테이블 위에 나란히 준비된 모습" width="900" height="1200" loading="lazy"><figcaption>케닷 박스 납품 준비</figcaption></figure>
   </div>
 
-  <div class="nav"><button class="prev" type="button" data-prev>이전</button><button class="next" type="button" data-next>무엇이 남나요? <svg><use href="#ar"/></svg></button></div>
+  <div class="nav"><button class="prev" type="button" data-prev>이전</button><button class="next" type="button" data-next>1년 뒤엔 어떻게 되나요? <svg><use href="#ar"/></svg></button></div>
  </div>
 </section>
 
-<!-- 05 남는 것 -->
-<section data-step="5" data-name="남는 것" hidden>
+<!-- 05 1년 뒤 -->
+<section data-step="5" data-name="1년 뒤" hidden>
  <div class="stage">
-  <p class="eyebrow">WHAT STAYS<span>05 / 07</span></p>
-  <h2 class="h2">가게 없이 <span class="o">먼저 쌓이는 것</span></h2>
+  <p class="eyebrow">AFTER 1 YEAR<span>05 / 07</span></p>
+  <h2 class="h2">1년 뒤, <span class="o" style="white-space:nowrap">내가 갈 길</span>을 고릅니다</h2>
+  <p class="say">1년 동안 실력과 고객을 쌓고,<br>세 가지 길 중 하나를 골라요.</p>
 
+  <p class="part block"><b>1</b>1년 동안 내 것이 되는 4가지</p>
   <div class="burst">
    <div class="core"><svg viewBox="0 0 120 160"><use href="#p-h"/></svg></div>
-   <span class="chip c1 a-pop" style="--d:.4s">마케팅</span>
-   <span class="chip c2 a-pop" style="--d:.6s">상담·견적</span>
-   <span class="chip c3 a-pop" style="--d:.8s">요리 실력</span>
-   <span class="chip or c4 a-pop" style="--d:1s">내 고객</span>
+   <span class="chip c1 a-pop" style="--d:.3s">마케팅</span>
+   <span class="chip c2 a-pop" style="--d:.5s">상담·견적</span>
+   <span class="chip c3 a-pop" style="--d:.7s">요리 실력</span>
+   <span class="chip or c4 a-pop" style="--d:.9s">내 고객</span>
   </div>
 
-  <div class="block fork">
-   <p class="after a-pop" style="--d:1.15s">1년 뒤</p>
-   <svg class="road" viewBox="0 0 600 120" aria-hidden="true">
-    <path d="M300 118 C300 70 100 70 100 6" fill="none" stroke="#2A2623" stroke-width="7" stroke-linecap="round" style="--len:330;--d:1.3s"/>
-    <path d="M300 118 V6" fill="none" stroke="#F26B21" stroke-width="7" stroke-linecap="round" style="--len:120;--d:1.3s"/>
-    <path d="M300 118 C300 70 500 70 500 6" fill="none" stroke="#2A2623" stroke-width="7" stroke-linecap="round" style="--len:330;--d:1.3s"/>
+  <div class="span block" aria-label="지금부터 1년 동안 실전 주문, 그리고 1년 뒤">
+   <span class="chip">지금</span>
+   <div class="bar"><i></i><em>1년 동안 실전 주문</em></div>
+   <span class="chip or a-pop after-pill" style="--d:1.9s">1년 뒤</span>
+  </div>
+
+  <p class="part block"><b>2</b>1년 뒤, 셋 중 하나를 골라요</p>
+  <div class="fork">
+   <svg class="road" viewBox="0 0 600 90" aria-hidden="true">
+    <path d="M300 4 V20 C300 50 100 40 100 86" fill="none" stroke="#2A2623" stroke-width="7" stroke-linecap="round" pathLength="100" style="--len:100;--d:2.2s"/>
+    <path d="M300 4 V86" fill="none" stroke="#2A2623" stroke-width="7" stroke-linecap="round" pathLength="100" style="--len:100;--d:2.2s"/>
+    <path d="M300 4 V20 C300 50 500 40 500 86" fill="none" stroke="#2A2623" stroke-width="7" stroke-linecap="round" pathLength="100" style="--len:100;--d:2.2s"/>
    </svg>
-   <div class="ways">
-    <div class="way a-up" style="--d:2.1s"><svg viewBox="0 0 120 90"><use href="#box"/></svg><h4>케닷파트너로 계속</h4><p>지금처럼 함께</p></div>
-    <div class="way a-up" style="--d:2.25s"><svg viewBox="0 0 200 180"><use href="#shop"/></svg><h4>내 가게 + 케닷 협력사</h4><p>집 가까운 곳에</p></div>
-    <div class="way a-up" style="--d:2.4s"><svg viewBox="0 0 120 120"><use href="#flag"/></svg><h4>나만의 브랜드</h4><p>배운 메뉴를 가지고</p></div>
-   </div>
-   <p class="src">특허받은 케닷박스 패키지는 케닷 안에서만 쓸 수 있습니다.</p>
+   <ol class="ways">
+    <li class="way a-up" style="--d:2.8s"><b class="n">1</b><svg viewBox="0 0 120 90"><use href="#box"/></svg><h4>케닷파트너로 계속</h4><p>지금처럼 공유 주방에서 <br>케닷 이름으로 일해요</p></li>
+    <li class="way a-up" style="--d:2.95s"><b class="n">2</b><svg viewBox="0 0 200 180"><use href="#shop"/></svg><h4>우리 동네에 케닷 가게</h4><p>집 가까운 곳에 가게를 열고 <br>케닷 협력사가 돼요</p></li>
+    <li class="way a-up" style="--d:3.1s"><b class="n">3</b><svg viewBox="0 0 120 120"><use href="#flag"/></svg><h4>내 이름으로 독립</h4><p>익힌 메뉴와 실력으로 <br>나만의 브랜드를 만들어요</p></li>
+   </ol>
+   <p class="src">3번 길을 고르면 배운 메뉴는 가져갈 수 있지만, 특허받은 케닷박스 포장은 케닷 안에서만 씁니다.</p>
   </div>
 
   <div class="crew block">
@@ -563,7 +585,7 @@ form{display:grid;gap:12px}
     <svg class="a-up" style="--d:.5s" viewBox="0 0 120 160"><use href="#p-h"/></svg>
    </div>
    <div>
-    <h3>혼자가 아니라 <span class="o">함께</span></h3>
+    <h3>어느 길이든 <span class="o">혼자가 아니에요</span></h3>
     <div class="chips">
      <span class="chip">지문으로 드나드는 주방</span>
      <span class="chip">매달 커피챗</span>
@@ -786,7 +808,7 @@ form{display:grid;gap:12px}
     if (n === 1){ SND.later(SND.low, 2800); }
     if (n === 2){ SND.later(SND.soft, 1900); SND.later(SND.soft, 2600); }
     if (n === 4){ SND.later(SND.soft, 2400); }
-    if (n === 5){ SND.later(SND.rise, 1150); }
+    if (n === 5){ SND.later(SND.rise, 1900); }
   }
 
   function show(n, push){
