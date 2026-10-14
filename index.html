@@ -361,6 +361,17 @@ form{display:grid;gap:12px}
 .submit svg{width:20px;height:20px}
 .submit:hover{filter:brightness(1.07)}
 .submit:disabled{opacity:.6}
+.ok-box{background:#34302D;border:2px solid var(--orange);border-radius:24px;padding:40px 24px 30px;text-align:center;color:#fff;animation:up .45s ease both;outline:none}
+.ok-ic svg{width:88px;height:88px;animation:pop .5s cubic-bezier(.3,1.5,.6,1) both}
+.ok-tick{stroke-dasharray:50;stroke-dashoffset:50;animation:draw .5s ease .35s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.ok-name{font-size:20px;font-weight:700;color:#F3D9C4;margin-top:18px;min-height:0}
+.ok-name:empty{display:none}
+.ok-box h3{font-size:clamp(28px,3.4vw,36px);font-weight:900;letter-spacing:-.03em;margin-top:6px}
+.ok-say{font-size:19px;font-weight:700;margin-top:12px;line-height:1.5}
+.ok-say b{color:var(--orange)}
+.ok-sub{font-size:15px;color:#CFC7BD;margin-top:6px}
+.ok-again{margin-top:22px;background:none;border:0;color:#CFC7BD;font:inherit;font-size:14px;text-decoration:underline;cursor:pointer}
 .msg{min-height:22px;text-align:center;font-size:15px;color:var(--orange);margin-top:4px}
 .msg.err{color:#ff9d8f}
 .dark .nav{border-color:var(--charline)}
@@ -797,6 +808,14 @@ form{display:grid;gap:12px}
     <button class="submit" type="submit">무료 상담 신청 <svg><use href="#ar"/></svg></button>
     <p class="msg" id="msg" aria-live="polite"></p>
    </form>
+   <div class="ok-box" id="okBox" role="status" aria-live="polite" tabindex="-1" hidden>
+    <div class="ok-ic"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="#F26B21" stroke="#fff" stroke-width="4"/><path class="ok-tick" d="M19 33 l9 9 l18 -20" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <p class="ok-name" id="okName"></p>
+    <h3>신청이 접수됐습니다</h3>
+    <p class="ok-say">내일 중으로<br><b style="white-space:nowrap">직접 전화</b>드리겠습니다.</p>
+    <p class="ok-sub">고르신 통화 시간에 맞춰 연락드려요.</p>
+    <button type="button" class="ok-again" id="okAgain">다른 분 신청하기</button>
+   </div>
   </div>
   <div class="nav"><button class="prev" type="button" data-prev>이전</button></div>
  </div>
@@ -1093,6 +1112,7 @@ form{display:grid;gap:12px}
     var d = e.target.value.replace(/\D/g,'').slice(0,11);
     e.target.value = d.length < 4 ? d : d.length < 8 ? d.slice(0,3)+'-'+d.slice(3) : d.slice(0,3)+'-'+d.slice(3,7)+'-'+d.slice(7);
   });
+  document.getElementById('okAgain').onclick = function(){ document.getElementById('okBox').hidden = true; form.hidden = false; form.scrollIntoView({behavior:'smooth', block:'start'}); };
   form.addEventListener('submit', function(e){
     e.preventDefault();
     msg.className = 'msg err';
@@ -1102,8 +1122,13 @@ form{display:grid;gap:12px}
     if (!form.agree.checked){ msg.textContent='개인정보 수집·이용에 동의해주세요.'; return; }
     var btn = form.querySelector('.submit'); btn.disabled = true;
     var done = function(){
-      msg.className='msg'; msg.textContent='신청이 접수됐습니다. 내일 중으로 직접 연락드리겠습니다.';
+      var nm = form.name.value.trim();
+      msg.className='msg'; msg.textContent='';
+      document.getElementById('okName').textContent = nm ? nm + '님,' : '';
       form.reset(); btn.disabled = false;
+      form.hidden = true; var ok = document.getElementById('okBox'); ok.hidden = false;
+      ok.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
+      try { ok.focus({preventScroll:true}); } catch(_){}
       window.dataLayer.push({event:'kp_submit'}); SND.done();
     };
     if (READY){
