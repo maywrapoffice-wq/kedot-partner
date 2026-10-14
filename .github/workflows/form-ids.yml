@@ -1,0 +1,19 @@
+name: form-ids
+on:
+  push:
+    paths: ["tools/form_ids.py", ".github/workflows/form-ids.yml"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  ids:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/form_ids.py
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add form-ids.json
+          git commit -m "구글 폼 질문 번호 기록" || true
+          git push
