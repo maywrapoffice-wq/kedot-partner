@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="6주 온보딩, 그리고 실전 주문. 가게 계약 전에 먼저 사장으로 일해보세요.">
+<meta name="description" content="가게 차리기 전에, 진짜 주문을 받으며 사장 연습부터 해보세요.">
 <meta property="og:title" content="케닷파트너 | 가게보다 먼저, 경험부터">
-<meta property="og:description" content="6주 온보딩, 그리고 실전 주문. 가게 계약 전에 먼저 사장으로 일해보세요.">
+<meta property="og:description" content="가게 차리기 전에, 진짜 주문을 받으며 사장 연습부터 해보세요.">
 <meta property="og:image" content="https://partner.gachicharim.com/img/scale.jpg">
 </head>
 <body>
@@ -130,6 +130,7 @@ body.is-dark .steps button[aria-current="step"]{color:var(--chartext);background
 .seven>div{min-width:0}
 .big{font-size:clamp(64px,9vw,112px);font-weight:900;line-height:1;letter-spacing:-.05em;color:var(--orange)}
 .big small{font-size:.42em}
+.big.word{font-size:clamp(44px,6vw,76px);line-height:1.05;letter-spacing:-.04em;white-space:nowrap}
 .seven .say{margin-top:14px}
 .swap{margin-top:clamp(36px,5vw,56px);background:var(--orange);color:#fff;border-radius:24px;padding:clamp(24px,4vw,40px);font-size:clamp(26px,3.4vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.3}
 .swap small{display:block;font-size:clamp(15px,1.5vw,18px);font-weight:600;opacity:.95;margin-top:10px;letter-spacing:0}
@@ -258,6 +259,13 @@ body.is-dark .steps button[aria-current="step"]{color:var(--chartext);background
 .res h3{font-size:clamp(24px,2.8vw,32px);font-weight:900;margin-top:18px}
 .res p{font-size:16px;color:var(--sub);margin-top:10px;font-weight:600}
 .res .go{margin-top:20px;background:var(--orange);color:#fff;border:3px solid var(--ink);border-radius:999px;padding:14px 24px;font-weight:800;cursor:pointer;font-size:16px}
+.voice{margin-top:32px;padding:22px 22px 18px;border-left:4px solid var(--orange);background:var(--char2);border-radius:0 14px 14px 0}
+.voice p{font-size:17px;line-height:1.65;color:var(--chartext);font-weight:600}
+.voice cite{display:block;margin-top:10px;font-style:normal;font-size:12.5px;color:var(--charsub)}
+.share{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:18px;width:100%;max-width:360px;height:52px;border-radius:999px;border:2px solid var(--ink);background:var(--white);color:var(--ink);font-size:16px;font-weight:800;cursor:pointer}
+.share::before{content:"";width:18px;height:18px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 3v12M7 8l5-5 5 5M5 13v7h14v-7' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 3v12M7 8l5-5 5 5M5 13v7h14v-7' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.share.dk{background:transparent;color:var(--chartext);border-color:var(--charline)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:999px;font-size:15px;font-weight:700;z-index:60;max-width:calc(100% - 32px);text-align:center}
 .res .again{margin-left:10px;background:none;border:0;color:var(--sub);cursor:pointer;font-size:14px}
 .notfor{display:grid;gap:10px}
 .notfor h3{font-size:18px;font-weight:900;margin-bottom:4px}
@@ -316,6 +324,7 @@ form{display:grid;gap:12px}
   .scene{max-width:300px}
   .ppl{grid-template-columns:repeat(5,1fr);max-width:280px}
   .seven{grid-template-columns:1fr;gap:12px}
+  .big.word br{display:none}
   .weeks{grid-template-columns:repeat(3,1fr)}
   .brace{display:none}
   .gate{grid-template-columns:96px 1fr;gap:18px}
@@ -420,15 +429,15 @@ form{display:grid;gap:12px}
   </div>
 
   <div class="seven block">
-   <div class="big num"><span id="c70" data-count="70">70</span><small>%</small></div>
+   <div class="big word">2곳 중<br>1곳</div>
    <div>
-    <div class="ppl" id="ppl" role="img" aria-label="10명 중 7명"></div>
-    <p class="say">10명 중 7명이 3년 안에 문을 닫았습니다.</p>
-    <p class="src">가치차림 자체 조사 · 이전 창업교육 ‘4평 매장 사장되기’ 수료생 297명 중 연락이 닿은 분 기준 · 평균 투자금 5,300만~5,800만 원</p>
+    <div class="ppl" id="ppl" role="img" aria-label="10곳 중 5곳"></div>
+    <p class="say">한식당 2곳 중 1곳은 3년 안에 문을 닫습니다.</p>
+    <p class="src">한식음식점 3년 생존율 50.1% · 출처: 국세청 100대 생활업종 통계(2023년 기준, 2025년 4월 발표)</p>
    </div>
   </div>
 
-  <div class="swap">그래서 순서를 바꿨습니다.<small>가게 계약 전에, 공유 주방에서 실제 단체주문으로 먼저 사장이 되어봅니다.</small></div>
+  <div class="swap">그래서 순서를 바꿨습니다.<small>가게 차리기 전에, 진짜 주문을 받으며 사장 연습부터 해봅니다.</small></div>
 
   <p class="legal">참여 비용이 있으며, 개인별 참여 횟수와 정산액은 다릅니다. 수익을 보장하지 않습니다.</p>
   <div class="nav"><button class="next" type="button" data-next>어떻게 시작하나요? <svg><use href="#ar"/></svg></button></div>
@@ -478,7 +487,7 @@ form{display:grid;gap:12px}
 <section data-step="3" data-name="실전" hidden>
  <div class="stage">
   <p class="eyebrow">HOW IT WORKS<span>03 / 07</span></p>
-  <h2 class="h2">내 가게 없이, <span class="o">이렇게</span> 일해요</h2>
+  <h2 class="h2"><span class="o">진짜 사장처럼,</span> 주문받고 만들고 납품해요</h2>
 
   <div class="flow" id="flow">
    <div class="track"><i id="trackFill"></i></div>
@@ -633,6 +642,11 @@ form{display:grid;gap:12px}
      <li><svg><use href="#v"/></svg>수료 후 공유 주방 · 케닷 브랜드 · 실제 단체주문</li>
      <li><svg><use href="#v"/></svg>신청 다음 날 전화로 직접 연락드립니다</li>
     </ul>
+    <blockquote class="voice">
+     <p>“저가 커피 매장 하나 해도 1억은 넘는다는데, 해보고 나서야 힘든 걸 알잖아요. 그런데 여기선 일반 사장처럼 똑같이 주문받아 볼 수 있다고요? 그런 게 있는 줄 몰랐어요.”</p>
+     <cite>파트너 합류 전 상담 인터뷰 중 · 일부 다듬음</cite>
+    </blockquote>
+    <button class="share dk" type="button" data-share>가게 차리려는 지인에게 보내기</button>
     <p class="legal">참여 비용이 있으며, 비용과 환불 기준은 상담 시 계약서로 먼저 안내드립니다. 개인별 참여 횟수와 정산액은 다르며, 수익을 보장하지 않습니다.</p>
    </div>
 
@@ -717,10 +731,10 @@ form{display:grid;gap:12px}
   var READY = ['name','phone','want','time','agree','stage','budget'].every(function(k){ return /^\d+$/.test(GFORM[k]); });
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // 01: 10명 중 7명
+  // 01: 10곳 중 5곳 (한식음식점 3년 생존율 50.1%)
   var ppl = document.getElementById('ppl'), html = '';
   for (var i=0;i<10;i++){
-    html += '<div class="pp '+(i<7?'lose':'keep')+'" style="--d:'+(3.4+i*0.18).toFixed(2)+'s"><svg class="h" viewBox="0 0 120 160"><use href="#p-h"/></svg><svg class="s" viewBox="0 0 120 160"><use href="#p-s"/></svg></div>';
+    html += '<div class="pp '+(i%2===0?'lose':'keep')+'" style="--d:'+(3.4+i*0.18).toFixed(2)+'s"><svg class="h" viewBox="0 0 120 160"><use href="#p-h"/></svg><svg class="s" viewBox="0 0 120 160"><use href="#p-s"/></svg></div>';
   }
   ppl.innerHTML = html;
 
@@ -832,7 +846,6 @@ form{display:grid;gap:12px}
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({event:'kp_step', step:n});
     clearTimeout(cntTimer);
-    if (n === 1 && !reduce) cntTimer = setTimeout(function(){ countUp(secs[0].querySelector('.seven')); }, 3400);
     if (n === 4) countUp(secs[3]);
     if (n === 3) startFlow(); else stopFlow();
   }
@@ -898,7 +911,7 @@ form{display:grid;gap:12px}
     } else {
       h = '<h3>상담에서 함께 확인해봐요</h3><p>'+miss.map(function(i){ return '· '+Q[i][0]; }).join('<br>')+'</p><button class="go" type="button" data-go="7">상담에서 물어보기</button>';
     }
-    card.innerHTML = dots(Q.length)+'<div class="res">'+h+'<button class="again" type="button" data-again>다시 하기</button></div>';
+    card.innerHTML = dots(Q.length)+'<div class="res">'+h+'<button class="again" type="button" data-again>다시 하기</button><button class="share" type="button" data-share>가게 차리려는 지인에게 보내기</button></div>';
   }
   card.addEventListener('click', function(e){
     var a = e.target.closest('[data-a]'); if (a){ SND.tap(); ans.push(a.dataset.a === '1'); ask(); if (ans.length === Q.length) SND.later(SND.rise, 200); return; }
@@ -906,6 +919,20 @@ form{display:grid;gap:12px}
     if (e.target.closest('[data-again]')){ ans = []; ask(); }
   });
   ask();
+
+  // 지인에게 보내기: 휴대폰은 공유 창(카톡 등), 안 되면 링크 복사
+  var SHARE_URL = 'https://partner.gachicharim.com';
+  function toast(t){ var d = document.createElement('div'); d.className = 'toast'; d.setAttribute('role','status'); d.textContent = t; document.body.appendChild(d); setTimeout(function(){ d.remove(); }, 2600); }
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('[data-share]')) return;
+    var data = { title: '케닷파트너', text: '가게 차리기 전에, 진짜 주문 받으며 사장 연습부터 해볼 수 있대요.', url: SHARE_URL };
+    window.dataLayer = window.dataLayer || []; window.dataLayer.push({event:'kp_share'});
+    if (navigator.share){ navigator.share(data).catch(function(){}); return; }
+    var copied = function(){ toast('링크를 복사했어요. 카톡에 붙여넣어 보내 주세요.'); };
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(SHARE_URL).then(copied).catch(function(){ toast(SHARE_URL); });
+    } else { toast(SHARE_URL); }
+  });
 
   // 07 상담 폼
   var form = document.getElementById('kpForm'), msg = document.getElementById('msg'), modal = document.getElementById('policy');
