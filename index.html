@@ -432,8 +432,8 @@ form{display:grid;gap:12px}
    <div class="big word">2곳 중<br>1곳</div>
    <div>
     <div class="ppl" id="ppl" role="img" aria-label="10곳 중 5곳"></div>
-    <p class="say">한식당 2곳 중 1곳은 3년 안에 문을 닫습니다.</p>
-    <p class="src">한식음식점 3년 생존율 50.1% · 출처: 국세청 100대 생활업종 통계(2023년 기준, 2025년 4월 발표)</p>
+    <p class="say">음식점·카페 창업, 2곳 중 1곳은 3년 안에 문을 닫습니다.</p>
+    <p class="src">3년 생존율: 커피음료점 53.2% · 한식음식점 50.1% · 패스트푸드점 46.8% · 분식점 46.6% · 출처: 국세청 100대 생활업종 통계(2023년 기준, 2025년 4월 발표)</p>
    </div>
   </div>
 
@@ -731,7 +731,7 @@ form{display:grid;gap:12px}
   var READY = ['name','phone','want','time','agree','stage','budget'].every(function(k){ return /^\d+$/.test(GFORM[k]); });
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // 01: 10곳 중 5곳 (한식음식점 3년 생존율 50.1%)
+  // 01: 10곳 중 5곳 (음식점·카페 3년 생존율 46.6~53.2%)
   var ppl = document.getElementById('ppl'), html = '';
   for (var i=0;i<10;i++){
     html += '<div class="pp '+(i%2===0?'lose':'keep')+'" style="--d:'+(3.4+i*0.18).toFixed(2)+'s"><svg class="h" viewBox="0 0 120 160"><use href="#p-h"/></svg><svg class="s" viewBox="0 0 120 160"><use href="#p-s"/></svg></div>';
