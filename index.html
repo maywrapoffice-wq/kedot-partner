@@ -669,13 +669,13 @@ form{display:grid;gap:12px}
   // 번호가 하나라도 비어 있으면 신청을 받지 않고 '준비 중' 안내만 보여줍니다.
   var GFORM = {
     action: "https://docs.google.com/forms/d/e/1FAIpQLScBwbItiUOAr9Sbn0hhCUy2zX_ApFcAP67Fk0u9vOXEAw5cZA/formResponse",
-    name:   "",   // 이름
-    phone:  "",   // 전화번호
-    want:   "",   // 지금 가장 원하시는 것은 무엇인가요?
-    time:   "",   // 통화하기 편한 시간
-    agree:  "",   // 개인정보 수집·이용 동의 (보내는 값: 동의합니다.)
-    stage:  "",   // 창업 준비 단계  ← 구글 폼에 새로 추가할 질문
-    budget: ""    // 창업에 생각하신 자금 규모 ← 구글 폼에 새로 추가할 질문
+    name:   "1641592288",   // 이름
+    phone:  "424742892",   // 전화번호
+    want:   "1081568635",   // 지금 가장 원하시는 것은 무엇인가요?
+    time:   "1693994118",   // 통화하기 편한 시간
+    agree:  "971295296",   // 개인정보 수집·이용 동의 (보내는 값: 동의합니다.)
+    stage:  "1034631938",   // 창업 준비 단계  
+    budget: "491752715"    // 창업에 생각하신 자금 규모 
   };
   var READY = ['name','phone','want','time','agree','stage','budget'].every(function(k){ return /^\d+$/.test(GFORM[k]); });
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
