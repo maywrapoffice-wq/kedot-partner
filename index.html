@@ -241,6 +241,12 @@ body.is-dark .steps button[aria-current="step"]{color:var(--chartext);background
 .burst .c4{right:2%;bottom:6%}
 .fork{position:relative}
 .tap-hint{font-size:14px;font-weight:700;color:var(--sub);margin-top:6px;padding-left:46px}
+.tap-hint i{font-style:normal;display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--ink);color:#fff;font-size:13px;font-weight:900;line-height:1;vertical-align:-3px;margin-right:2px}
+.kick{font-size:clamp(16px,1.8vw,19px);font-weight:800;color:var(--sub);margin-bottom:8px}
+.faq{background:var(--white);border:3px solid var(--ink);border-radius:20px;padding:18px 22px;max-width:620px}
+.faq .q{font-size:18px;font-weight:900}
+.faq .a{font-size:16px;font-weight:600;margin-top:6px;line-height:1.55}
+.faq .lnk{background:none;border:0;padding:0;font:inherit;color:var(--orange);font-weight:800;text-decoration:underline;cursor:pointer}
 button.chip{cursor:pointer;font-family:inherit;line-height:1.3}
 .chip.gain i{font-style:normal;display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--ink);color:#fff;font-size:14px;font-weight:900;line-height:1;transition:transform .25s}
 .chip.or.gain i{background:#fff;color:var(--orange)}
@@ -537,14 +543,16 @@ form{display:grid;gap:12px}
 <section data-step="3" data-name="실전" hidden>
  <div class="stage">
   <p class="eyebrow">HOW IT WORKS<span>03 / 07</span></p>
+  <p class="kick">6주를 마치면, 이렇게 일해요</p>
   <h2 class="h2 h2-fit"><span class="o">진짜 사장처럼,</span><br><span class="nw">주문받고 만들어서 출고해요</span></h2>
+  <p class="say">가게 없이, <span class="o">공유 주방에서</span> 시작해요</p>
 
   <div class="flow" id="flow">
    <div class="track"><i id="trackFill"></i></div>
    <svg class="mover" id="mover" viewBox="0 0 120 90" aria-hidden="true"><use href="#box"/></svg>
    <ol>
     <li class="fs on"><div class="ic"><svg viewBox="0 0 120 120"><use href="#cal"/></svg></div><div><h3>날짜 신청</h3><p>월말에 일할 날을 정해요</p></div></li>
-    <li class="fs"><div class="ic"><svg viewBox="0 0 120 120"><use href="#phone"/></svg></div><div><h3>주문 매칭</h3><p>일정에 맞게 순차적으로 매칭해드려요.</p></div></li>
+    <li class="fs"><div class="ic"><svg viewBox="0 0 120 120"><use href="#phone"/></svg></div><div><h3>주문 매칭</h3><p>케닷에 들어온 단체주문을<br>일정에 맞게 매칭해드려요</p></div></li>
     <li class="fs"><div class="ic"><svg class="tall" viewBox="0 0 120 160"><use href="#p-h"/></svg></div><div><h3>만들어서 출고</h3><p>장보기는 케닷이 해요</p></div></li>
     <li class="fs"><div class="ic"><svg viewBox="0 0 120 120"><use href="#coins"/></svg></div><div><h3>정산</h3><p>일한 만큼 수익이 생겨요</p></div></li>
    </ol>
@@ -568,6 +576,8 @@ form{display:grid;gap:12px}
    <div class="stacks" id="stacks"></div>
   </div>
 
+  <div class="faq block"><p class="q">Q. 한 달에 얼마나 벌 수 있나요?</p><p class="a">일한 날과 주문량에 따라 달라요.<br>실제 정산 사례는 <button type="button" class="lnk" data-go="7">상담에서 보여드려요</button></p></div>
+
   <p class="legal">레벨 기준: 가치차림 운영 기준(2026년 10월). 단체주문은 성수기·비수기가 있어 주문량이 월급처럼 일정하지 않습니다. 정산액은 개인마다 다르며 수익을 보장하지 않습니다.</p>
   <div class="nav"><button class="prev" type="button" data-prev>이전</button><button class="next" type="button" data-next>실제 기록 보기 <svg><use href="#ar"/></svg></button></div>
  </div>
@@ -581,11 +591,11 @@ form{display:grid;gap:12px}
 
   <div class="stats block num">
    <div class="st a-up" style="--d:.05s"><p class="v"><span data-count="3000">3,000</span><small>건</small></p><p class="k">단체주문</p></div>
-   <div class="st a-up" style="--d:.15s"><p class="v"><span data-count="49">49</span><small>명</small></p><p class="k">파트너 대표</p></div>
+   <div class="st a-up" style="--d:.15s"><p class="v"><span data-count="49">49</span><small>명</small></p><p class="k">이미 함께하는 사장님</p></div>
    <div class="st a-up" style="--d:.25s"><p class="v"><span data-count="6">6</span><small>곳</small></p><p class="k">지역 협력사</p></div>
    <div class="st a-up" style="--d:.35s"><p class="v"><span data-count="2">2</span><small>개월</small></p><p class="k">첫 주문까지 평균</p></div>
   </div>
-  <p class="src">단체주문: 지난 약 10년 누적 · 파트너 대표 49명 중 매달 정산받는 활성 30명 이상 · 협력사: 부산·목포·남양주·연천·평택·일산 · 모두 가치차림 내부 기록, 2026년 10월 기준</p>
+  <p class="src">단체주문: 지난 약 10년 누적 · 함께하는 사장님 49명(각자 자기 사업으로 참여) 중 매달 정산받는 분 30명 이상 · 협력사: 부산·목포·남양주·연천·평택·일산 · 모두 가치차림 내부 기록, 2026년 10월 기준</p>
 
   <div class="rec block">
    <div>
@@ -616,7 +626,7 @@ form{display:grid;gap:12px}
   <p class="say">1년 동안 실력과 고객을 쌓고,<br>세 가지 길 중 하나를 골라요.</p>
 
   <p class="part block"><b>1</b>1년 동안 내 것이 되는 것들</p>
-  <p class="tap-hint">딱지를 누르면 자세히 볼 수 있어요</p>
+  <p class="tap-hint"><i>+</i> 버튼을 누르면 자세히 볼 수 있어요</p>
   <div class="burst">
    <div class="core"><svg viewBox="0 0 120 160"><use href="#p-h"/></svg></div>
    <button type="button" class="chip c1 a-pop gain" style="--d:.3s" data-gain="mk" aria-expanded="false" aria-controls="gainBox">마케팅<i aria-hidden="true">+</i></button>
@@ -1008,16 +1018,20 @@ form{display:grid;gap:12px}
   };
   var gainBox = document.getElementById('gainBox'), gainOpen = null;
   function closeGain(){ gainOpen = null; gainBox.hidden = true; document.querySelectorAll('.chip.gain').forEach(function(b){ b.setAttribute('aria-expanded','false'); }); }
+  function openGain(k){
+    gainOpen = k;
+    document.querySelectorAll('.chip.gain').forEach(function(x){ x.setAttribute('aria-expanded', x.dataset.gain === k ? 'true' : 'false'); });
+    var g = GAIN[k];
+    gainBox.innerHTML = '<h4>'+g[0]+' <span>'+g[1]+'</span></h4><ul>' + g[2].map(function(t){ return '<li><svg><use href="#v"/></svg>'+t+'</li>'; }).join('') + '</ul><button type="button" class="close-g">접기</button>';
+    gainBox.hidden = false;
+  }
+  openGain('mk');
   document.addEventListener('click', function(e){
     if (e.target.closest('.close-g')){ closeGain(); return; }
     var b = e.target.closest('.chip.gain'); if (!b) return;
     var k = b.dataset.gain;
     if (gainOpen === k){ closeGain(); return; }
-    gainOpen = k;
-    document.querySelectorAll('.chip.gain').forEach(function(x){ x.setAttribute('aria-expanded', x === b ? 'true' : 'false'); });
-    var g = GAIN[k];
-    gainBox.innerHTML = '<h4>'+g[0]+' <span>'+g[1]+'</span></h4><ul>' + g[2].map(function(t){ return '<li><svg><use href="#v"/></svg>'+t+'</li>'; }).join('') + '</ul><button type="button" class="close-g">접기</button>';
-    gainBox.hidden = false;
+    openGain(k);
     if (typeof SND !== 'undefined') SND.tap();
     window.dataLayer = window.dataLayer || []; window.dataLayer.push({event:'kp_gain', item:k});
     if (gainBox.getBoundingClientRect().bottom > window.innerHeight) gainBox.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'nearest'});
