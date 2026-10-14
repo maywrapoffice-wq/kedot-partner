@@ -277,6 +277,10 @@ button.chip{cursor:pointer;font-family:inherit;line-height:1.3}
 .way .n{position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;background:var(--orange);color:#fff;border:3px solid var(--ink);display:grid;place-items:center;font-size:16px;font-weight:900}
 .way svg{width:72px;height:72px}
 .way h4{font-size:18px;font-weight:900;margin-top:8px;letter-spacing:-.02em}
+.pat{display:flex;align-items:center;gap:8px;margin-top:16px;font-size:13.5px;font-weight:700;color:var(--ink);letter-spacing:-.02em;word-break:keep-all}
+.pat-b{flex:none;display:inline-flex;align-items:center;gap:4px;background:var(--orange);color:#fff;border:2px solid var(--ink);border-radius:999px;padding:3px 10px 3px 6px;font-size:12.5px;font-weight:900}
+.pat-b svg{width:20px;height:15px}
+@media (max-width:370px){.pat{font-size:12px;gap:6px}}
 .way p{font-size:15px;color:var(--sub);font-weight:600;margin-top:6px;line-height:1.5}
 @media (max-width:380px){.way p{font-size:13.5px;letter-spacing:-.02em}}
 .crew{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);align-items:center}
@@ -655,7 +659,7 @@ form{display:grid;gap:12px}
     <li class="way a-up" style="--d:2.95s"><b class="n">2</b><svg viewBox="0 0 200 180"><use href="#shop"/></svg><h4>우리 동네에 케닷 가게</h4><p>집 가까운 곳에 가게를 열고 <br>케닷 협력사가 돼요</p></li>
     <li class="way a-up" style="--d:3.1s"><b class="n">3</b><svg viewBox="0 0 120 120"><use href="#flag"/></svg><h4>내 이름으로 독립</h4><p><span class="nw">1년 동안 성장한 실력으로</span> <span class="nw">나만의 브랜드를 만들어서 독립해요</span></p></li>
    </ol>
-   <p class="src">3번 길을 고르면 배운 메뉴는 가져갈 수 있지만, 특허받은 케닷박스 포장은 케닷 안에서만 씁니다.</p>
+   <p class="pat"><span class="pat-b"><svg viewBox="0 0 120 90" aria-hidden="true"><use href="#box"/></svg>특허</span><span class="pat-t">케닷박스는 파트너·협력사 전용으로 제공돼요</span></p>
   </div>
 
   <div class="crew block">
