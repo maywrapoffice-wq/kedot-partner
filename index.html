@@ -1025,7 +1025,6 @@ form{display:grid;gap:12px}
     gainBox.innerHTML = '<h4>'+g[0]+' <span>'+g[1]+'</span></h4><ul>' + g[2].map(function(t){ return '<li><svg><use href="#v"/></svg>'+t+'</li>'; }).join('') + '</ul><button type="button" class="close-g">접기</button>';
     gainBox.hidden = false;
   }
-  openGain('mk');
   document.addEventListener('click', function(e){
     if (e.target.closest('.close-g')){ closeGain(); return; }
     var b = e.target.closest('.chip.gain'); if (!b) return;
