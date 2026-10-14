@@ -133,7 +133,7 @@ body.is-dark .steps button[aria-current="step"]{color:var(--chartext);background
 .happyface{opacity:0}
 .play .sadface{animation:fade .3s both;animation-delay:2.9s}
 .play .happyface{animation:out .3s both;animation-delay:2.9s}
-.ppl{display:grid;grid-template-columns:repeat(10,1fr);gap:clamp(4px,1vw,12px);max-width:620px}
+.ppl{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,3vw,32px);max-width:240px}
 .pp{position:relative;aspect-ratio:3/4}
 .pp svg{position:absolute;inset:0;width:100%;height:100%}
 .pp .h{opacity:0}
@@ -396,7 +396,7 @@ form{display:grid;gap:12px}
   .cta-top{padding:9px 14px;font-size:14px}
   .hero,.lv,.crew,.dx,.ap{grid-template-columns:1fr}
   .scene{max-width:300px}
-  .ppl{grid-template-columns:repeat(5,1fr);max-width:280px}
+  .ppl{max-width:200px}
   .seven{grid-template-columns:1fr;gap:12px}
   .big.word br{display:none}
   .weeks{grid-template-columns:repeat(2,1fr)}
@@ -522,7 +522,7 @@ form{display:grid;gap:12px}
   <div class="seven block">
    <div class="big word">2곳 중 <br>1곳</div>
    <div>
-    <div class="ppl" id="ppl" role="img" aria-label="10곳 중 5곳"></div>
+    <div class="ppl" id="ppl" role="img" aria-label="2곳 중 1곳"></div>
     <p class="say">새로 연 음식점·카페,<br><span style="white-space:nowrap">2곳 중 1곳은</span> 3년 안에 문을 닫습니다.</p>
     <p class="src">3년 생존율: 커피음료점 53.2% · 한식음식점 50.1% · 패스트푸드점 46.8% · 분식점 46.6% · 출처: 국세청 100대 생활업종 통계(2023년 기준, 2025년 4월 발표)</p>
    </div>
@@ -855,10 +855,10 @@ form{display:grid;gap:12px}
   var READY = ['name','phone','want','time','agree','stage','budget'].every(function(k){ return /^\d+$/.test(GFORM[k]); });
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // 01: 10곳 중 5곳 (음식점·카페 3년 생존율 46.6~53.2%)
+  // 01: 2곳 중 1곳 (음식점·카페 3년 생존율 46.6~53.2%)
   var ppl = document.getElementById('ppl'), html = '';
-  for (var i=0;i<10;i++){
-    html += '<div class="pp '+(i%2===0?'lose':'keep')+'" style="--d:'+(3.4+i*0.18).toFixed(2)+'s"><svg class="h" viewBox="0 0 120 160"><use href="#p-h"/></svg><svg class="s" viewBox="0 0 120 160"><use href="#p-s"/></svg></div>';
+  for (var i=0;i<2;i++){
+    html += '<div class="pp '+(i===1?'lose':'keep')+'" style="--d:3.4s"><svg class="h" viewBox="0 0 120 160"><use href="#p-h"/></svg><svg class="s" viewBox="0 0 120 160"><use href="#p-s"/></svg></div>';
   }
   ppl.innerHTML = html;
 
