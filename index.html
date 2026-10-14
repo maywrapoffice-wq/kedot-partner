@@ -216,6 +216,19 @@ body.is-dark .steps button[aria-current="step"]{color:var(--chartext);background
 .burst .c3{left:2%;bottom:10%}
 .burst .c4{right:2%;bottom:6%}
 .fork{position:relative}
+.tap-hint{font-size:14px;font-weight:700;color:var(--sub);margin-top:6px;padding-left:46px}
+button.chip{cursor:pointer;font-family:inherit;line-height:1.3}
+.chip.gain i{font-style:normal;display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--ink);color:#fff;font-size:14px;font-weight:900;line-height:1;transition:transform .25s}
+.chip.or.gain i{background:#fff;color:var(--orange)}
+.chip.gain[aria-expanded="true"]{background:var(--ink);color:#fff}
+.chip.gain[aria-expanded="true"] i{transform:rotate(45deg);background:#fff;color:var(--ink)}
+.gain-box{max-width:620px;margin:8px auto 0;background:var(--white);border:3px solid var(--ink);border-radius:20px;padding:20px 22px 18px;animation:up .35s ease both}
+.gain-box h4{font-size:20px;font-weight:900;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+.gain-box h4 span{font-size:13px;font-weight:700;color:var(--sub)}
+.gain-box ul{list-style:none;margin-top:12px;display:grid;gap:10px}
+.gain-box li{display:flex;gap:10px;font-size:16px;font-weight:600;line-height:1.5}
+.gain-box li svg{flex:none;width:22px;height:22px;margin-top:1px}
+.gain-box .close-g{margin-top:14px;background:none;border:0;color:var(--sub);font-size:14px;cursor:pointer;text-decoration:underline}
 .part{display:flex;align-items:center;gap:12px;font-size:clamp(19px,2vw,23px);font-weight:900;letter-spacing:-.02em}
 .part b{flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:16px}
 .span{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px}
@@ -556,14 +569,16 @@ form{display:grid;gap:12px}
   <h2 class="h2">1년 뒤, <span class="o" style="white-space:nowrap">내가 갈 길</span>을 고릅니다</h2>
   <p class="say">1년 동안 실력과 고객을 쌓고,<br>세 가지 길 중 하나를 골라요.</p>
 
-  <p class="part block"><b>1</b>1년 동안 내 것이 되는 4가지</p>
+  <p class="part block"><b>1</b>1년 동안 내 것이 되는 것들</p>
+  <p class="tap-hint">딱지를 누르면 자세히 볼 수 있어요</p>
   <div class="burst">
    <div class="core"><svg viewBox="0 0 120 160"><use href="#p-h"/></svg></div>
-   <span class="chip c1 a-pop" style="--d:.3s">마케팅</span>
-   <span class="chip c2 a-pop" style="--d:.5s">상담·견적</span>
-   <span class="chip c3 a-pop" style="--d:.7s">요리 실력</span>
-   <span class="chip or c4 a-pop" style="--d:.9s">내 고객</span>
+   <button type="button" class="chip c1 a-pop gain" style="--d:.3s" data-gain="mk" aria-expanded="false" aria-controls="gainBox">마케팅<i aria-hidden="true">+</i></button>
+   <button type="button" class="chip c2 a-pop gain" style="--d:.5s" data-gain="cs" aria-expanded="false" aria-controls="gainBox">상담·견적<i aria-hidden="true">+</i></button>
+   <button type="button" class="chip c3 a-pop gain" style="--d:.7s" data-gain="ck" aria-expanded="false" aria-controls="gainBox">요리 실력<i aria-hidden="true">+</i></button>
+   <button type="button" class="chip or c4 a-pop gain" style="--d:.9s" data-gain="cu" aria-expanded="false" aria-controls="gainBox">내 고객<i aria-hidden="true">+</i></button>
   </div>
+  <div class="gain-box" id="gainBox" role="region" aria-live="polite" hidden></div>
 
   <div class="span block" aria-label="지금부터 1년 동안 실전 주문, 그리고 1년 뒤">
    <span class="chip">지금</span>
@@ -919,6 +934,48 @@ form{display:grid;gap:12px}
     if (e.target.closest('[data-again]')){ ans = []; ask(); }
   });
   ask();
+
+  // 05: 딱지를 누르면 그 안에 담긴 것들이 펼쳐짐
+  var GAIN = {
+    mk: ['마케팅', '내 SNS가 함께 커요', [
+      '매주 1회 SNS 교육, 100번 물어봐도 100번 친절하게',
+      '목요일 마케팅 데이: 나오기만 해도 포스팅·릴스 완성',
+      '인스타그램 릴스 만드는 법',
+      '클로드(AI)로 릴스 편집하기 등 매주 새로 나오는 활용법',
+      '케닷 공동 브랜드로 함께 홍보하며 내 계정도 성장']],
+    cs: ['상담·견적', '실제 고객과 직접', [
+      '문의가 오면 응대하고 상담하는 법',
+      '견적서 쓰는 법',
+      '공기관·대학교·기업 단체주문을 직접 상담',
+      '주문부터 제작·납품·정산까지 전체 흐름']],
+    ck: ['요리 실력', '대량으로, 같은 품질로', [
+      '온보딩 레시피 4회로 단체주문 대표 메뉴부터',
+      '2,000여 개 보유 레시피 중 표준화되는 대로 새 메뉴 계속 공유',
+      '수십~수백 인분을 같은 맛과 모양으로 만드는 법',
+      '레벨 1(20인분 미만)부터 레벨 3(100~200인분)까지 단계별로',
+      '강사 과정 수료 후 오디션을 통과하면 강사로도 활동']],
+    cu: ['내 고객', '어디서든 다시 시작할 힘', [
+      '내가 홍보하고 상담해서 만난 고객',
+      '독립하더라도 그 고객은 내 고객',
+      '공기관·기업 납품 실적이 내 포트폴리오로',
+      '전국 300여 명 수강생·파트너 네트워크']]
+  };
+  var gainBox = document.getElementById('gainBox'), gainOpen = null;
+  function closeGain(){ gainOpen = null; gainBox.hidden = true; document.querySelectorAll('.chip.gain').forEach(function(b){ b.setAttribute('aria-expanded','false'); }); }
+  document.addEventListener('click', function(e){
+    if (e.target.closest('.close-g')){ closeGain(); return; }
+    var b = e.target.closest('.chip.gain'); if (!b) return;
+    var k = b.dataset.gain;
+    if (gainOpen === k){ closeGain(); return; }
+    gainOpen = k;
+    document.querySelectorAll('.chip.gain').forEach(function(x){ x.setAttribute('aria-expanded', x === b ? 'true' : 'false'); });
+    var g = GAIN[k];
+    gainBox.innerHTML = '<h4>'+g[0]+' <span>'+g[1]+'</span></h4><ul>' + g[2].map(function(t){ return '<li><svg><use href="#v"/></svg>'+t+'</li>'; }).join('') + '</ul><button type="button" class="close-g">접기</button>';
+    gainBox.hidden = false;
+    if (typeof SND !== 'undefined') SND.tap();
+    window.dataLayer = window.dataLayer || []; window.dataLayer.push({event:'kp_gain', item:k});
+    if (gainBox.getBoundingClientRect().bottom > window.innerHeight) gainBox.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'nearest'});
+  });
 
   // 지인에게 보내기: 휴대폰은 공유 창(카톡 등), 안 되면 링크 복사
   var SHARE_URL = 'https://partner.gachicharim.com';
