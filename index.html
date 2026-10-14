@@ -299,7 +299,9 @@ button.chip{cursor:pointer;font-family:inherit;line-height:1.3}
 .span .after-pill{font-size:18px}
 .after{position:relative;z-index:1;width:max-content;margin:0 auto -10px;background:var(--orange);color:#fff;border:3px solid var(--ink);border-radius:999px;padding:8px 22px;font-size:clamp(20px,2.4vw,26px);font-weight:900;letter-spacing:-.02em;line-height:1.2}
 .road{width:100%;height:auto;display:block}
-.road path{stroke-dasharray:var(--len);stroke-dashoffset:0}
+.road path{fill:none;stroke:#2A2623;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--len);stroke-dashoffset:0}
+.road .rd{fill:#F26B21;stroke:#2A2623;stroke-width:1.5}
+.play .road .rd{animation:fade .3s both;animation-delay:var(--d)}
 .play .road path{animation:draw 1s ease both;animation-delay:var(--d)}
 .ways{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px}
 .way{position:relative;background:var(--white);border:3px solid var(--ink);border-radius:20px;padding:22px 14px 18px;text-align:center;min-width:0}
@@ -377,8 +379,8 @@ form{display:grid;gap:12px}
 .submit:disabled{opacity:.6}
 .ok-box{background:#34302D;border:2px solid var(--orange);border-radius:24px;padding:40px 24px 30px;text-align:center;color:#fff;animation:up .45s ease both;outline:none}
 .ok-ic svg{width:88px;height:88px;animation:pop .5s cubic-bezier(.3,1.5,.6,1) both}
-.ok-tick{stroke-dasharray:50;stroke-dashoffset:50;animation:draw .5s ease .35s forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
+.ok-tick{stroke-dasharray:50;stroke-dashoffset:50;animation:drawtick .5s ease .35s forwards}
+@keyframes drawtick{to{stroke-dashoffset:0}}
 .ok-name{font-size:20px;font-weight:700;color:#F3D9C4;margin-top:18px;min-height:0}
 .ok-name:empty{display:none}
 .ok-box h3{font-size:clamp(28px,3.4vw,36px);font-weight:900;letter-spacing:-.03em;margin-top:6px}
@@ -705,9 +707,11 @@ form{display:grid;gap:12px}
   <p class="part block"><b>2</b>1년 뒤, 셋 중 하나를 골라요</p>
   <div class="fork">
    <svg class="road" viewBox="0 0 600 90" aria-hidden="true">
-    <path d="M300 4 V20 C300 50 100 40 100 86" fill="none" stroke="#2A2623" stroke-width="7" stroke-linecap="round" pathLength="100" style="--len:100;--d:2.2s"/>
-    <path d="M300 4 V86" fill="none" stroke="#2A2623" stroke-width="7" stroke-linecap="round" pathLength="100" style="--len:100;--d:2.2s"/>
-    <path d="M300 4 V20 C300 50 500 40 500 86" fill="none" stroke="#2A2623" stroke-width="7" stroke-linecap="round" pathLength="100" style="--len:100;--d:2.2s"/>
+    <path d="M300 2 V40" pathLength="100" style="--len:100;--d:2.1s"/>
+    <path d="M300 40 H114 Q98 40 98 56 V88" pathLength="100" style="--len:100;--d:2.35s"/>
+    <path d="M300 40 V88" pathLength="100" style="--len:100;--d:2.35s"/>
+    <path d="M300 40 H486 Q502 40 502 56 V88" pathLength="100" style="--len:100;--d:2.35s"/>
+    <circle class="rd" cx="300" cy="40" r="4" style="--d:2.3s"/>
    </svg>
    <ol class="ways">
     <li class="way a-up" style="--d:2.8s"><b class="n">1</b><svg viewBox="0 0 120 90"><use href="#box"/></svg><h4>케닷파트너로 계속</h4><p><span class="nw">지금처럼 공유 주방에서</span> <span class="nw">케닷파트너로 함께해요</span></p></li>
