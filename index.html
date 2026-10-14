@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="6주 온보딩, 그리고 실전 주문. 가게 계약 전에 먼저 사장으로 일해보세요.">
+<meta property="og:title" content="케닷파트너 | 가게보다 먼저, 경험부터">
+<meta property="og:description" content="6주 온보딩, 그리고 실전 주문. 가게 계약 전에 먼저 사장으로 일해보세요.">
+</head>
+<body>
+<title>케닷파트너 모집</title>
+<!--
+  내 사이트에 넣을 때 <head>에 함께 넣을 공유 미리보기 태그 (카톡·인스타 공유용)
+  <meta name="description" content="6주 온보딩, 그리고 실전 주문. 가게 계약 전에 먼저 사장으로 일해보세요.">
+  <meta property="og:title" content="케닷파트너 | 가게보다 먼저, 경험부터">
+  <meta property="og:description" content="6주 온보딩, 그리고 실전 주문. 가게 계약 전에 먼저 사장으로 일해보세요.">
+  <meta property="og:image" content="(대표 사진 주소 — 1200x630)">
+-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap">
+<style>
+/* 레이아웃: 왼쪽 단계 탭 + 한 번에 한 장면. 케닷 구조 애니메이션과 같은 베이지 바탕·굵은 먹색 도형·오렌지 강조. 글은 큰 문장 한 줄, 설명은 그림이 맡는다. */
+:root{
+  --bg:#FFF4E8; --ink:#2A2623; --sub:#7A726B; --orange:#F26B21; --lo:#FFD3B8; --red:#D63A2F; --white:#FFFFFF;
+  --line:#EADBCB; --tint:#FBE7D5;
+  --char:#1E1B19; --char2:#2A2725; --charline:#3D3935; --charsub:#8C857D; --chartext:#F6F0E9;
+  --f:"Pretendard","Pretendard Variable","Noto Sans KR",-apple-system,"Apple SD Gothic Neo",sans-serif;
+  --gut:clamp(16px,5vw,72px);
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all}
+h1,h2,h3{text-wrap:balance;letter-spacing:-.03em;line-height:1.25}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.num{font-variant-numeric:tabular-nums}
+.o{color:var(--orange)}
+svg{overflow:visible}
+
+/* 상단 바 */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar-in{display:flex;align-items:center;gap:12px;padding:14px var(--gut)}
+.logo{margin-right:auto;font-weight:900;font-size:20px;letter-spacing:-.03em;text-decoration:none;display:flex;align-items:center;gap:4px;white-space:nowrap}
+.logo i{width:8px;height:8px;border-radius:50%;background:var(--orange);display:inline-block;transform:translateY(-7px)}
+.cta-top{background:var(--orange);color:#fff;border:0;border-radius:999px;padding:11px 20px;font-size:15px;font-weight:800;cursor:pointer;white-space:nowrap}
+.now{display:none;font-size:14px;color:var(--sub);font-weight:600}
+.now b{color:var(--orange)}
+.prog{height:4px;background:var(--line)}
+.prog span{display:block;height:100%;background:var(--orange);width:14.28%;transition:width .4s ease}
+
+/* 왼쪽 단계 탭 */
+.side{position:fixed;left:0;top:calc(66px + env(safe-area-inset-top,0px));bottom:0;width:220px;padding-block:32px;border-right:1px solid var(--line);background:var(--bg);z-index:10;overflow-y:auto}
+main{margin-left:220px}
+.steps{list-style:none;display:grid;gap:2px}
+.steps button{width:100%;text-align:left;background:none;border:0;border-left:4px solid transparent;cursor:pointer;padding:13px 16px 13px 26px;font-size:16px;color:var(--sub);display:flex;gap:12px;align-items:baseline}
+.steps button b{font-size:12px;font-weight:800;font-variant-numeric:tabular-nums}
+.steps button:hover{color:var(--ink)}
+.steps button[aria-current="step"]{color:var(--ink);font-weight:800;border-left-color:var(--orange);background:var(--tint)}
+.steps button[aria-current="step"] b{color:var(--orange)}
+body.is-dark .side{background:var(--char);border-color:var(--charline)}
+body.is-dark .steps button{color:var(--charsub)}
+body.is-dark .steps button[aria-current="step"]{color:var(--chartext);background:var(--char2)}
+
+/* 장면 공통 */
+.stage{padding-block:clamp(40px,6vw,80px) 36px;padding-inline:var(--gut);max-width:1180px;margin:0 auto}
+.eyebrow{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--orange);margin-bottom:14px}
+.eyebrow span{color:var(--sub);font-weight:600;margin-left:8px;letter-spacing:.06em}
+.h1{font-size:clamp(34px,5.4vw,68px);font-weight:900}
+.h2{font-size:clamp(30px,4.4vw,56px);font-weight:900}
+.say{font-size:clamp(19px,2vw,24px);font-weight:700;margin-top:18px;line-height:1.5}
+.src{font-size:11.5px;color:var(--sub);line-height:1.55;margin-top:10px}
+.src a{color:var(--sub)}
+.legal{font-size:11.5px;color:var(--sub);margin-top:28px;line-height:1.6}
+.block{margin-top:clamp(40px,6vw,72px)}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:3px solid var(--ink);border-radius:999px;padding:8px 16px;font-weight:800;font-size:16px;white-space:nowrap}
+.chip.or{background:var(--orange);color:#fff}
+.chip.lo{background:var(--lo)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.ph{border:3px dashed var(--orange);background:var(--tint);border-radius:18px;display:flex;align-items:flex-end;padding:14px;min-height:180px;max-width:100%}
+.ph span{font-size:12px;font-weight:800;color:var(--orange);background:var(--bg);border-radius:999px;padding:5px 12px}
+
+/* 다음 버튼 */
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:44px;padding-top:24px;border-top:1px solid var(--line)}
+.prev{background:none;border:0;cursor:pointer;color:var(--sub);font-size:16px;padding:12px 0}
+.next{margin-left:auto;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:18px 28px;font-size:18px;font-weight:800;cursor:pointer;display:flex;gap:12px;align-items:center;transition:background .2s}
+.next:hover{background:var(--orange)}
+.next svg{width:20px;height:20px}
+
+/* 애니메이션: .play가 붙을 때만 움직이고, 멈춘 상태가 완성 화면 */
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.12)}100%{transform:scale(1)}}
+@keyframes up{from{transform:translateY(28px);opacity:0}to{transform:none;opacity:1}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes out{from{opacity:1}to{opacity:0}}
+@keyframes coin{0%{transform:translateY(-120px);opacity:0}15%{opacity:1}75%{transform:translateY(0);opacity:1}100%{transform:translateY(16px);opacity:0}}
+@keyframes shut{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes draw{from{stroke-dashoffset:var(--len)}to{stroke-dashoffset:0}}
+@keyframes dooropen{from{transform:none}to{transform:scaleX(.22)}}
+.play .a-pop{animation:pop .5s cubic-bezier(.3,1.5,.6,1) both;animation-delay:var(--d,0s)}
+.play .a-up{animation:up .55s ease both;animation-delay:var(--d,0s)}
+.a-pop{transform-box:fill-box;transform-origin:center}
+
+/* 01 */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,56px);align-items:center}
+.hero>div{min-width:0}
+.scene{width:100%;max-width:460px;justify-self:center}
+.coin{opacity:0}
+.play .coin{animation:coin 1.1s ease-in both;animation-delay:var(--d)}
+.shutter{transform-box:fill-box;transform-origin:top}
+.play .shutter{animation:shut .7s ease both;animation-delay:2.1s}
+.play .closed{animation:pop .5s cubic-bezier(.3,1.5,.6,1) both;animation-delay:2.8s}
+.happyface{opacity:0}
+.play .sadface{animation:fade .3s both;animation-delay:2.9s}
+.play .happyface{animation:out .3s both;animation-delay:2.9s}
+.ppl{display:grid;grid-template-columns:repeat(10,1fr);gap:clamp(4px,1vw,12px);max-width:620px}
+.pp{position:relative;aspect-ratio:3/4}
+.pp svg{position:absolute;inset:0;width:100%;height:100%}
+.pp .h{opacity:0}
+.pp.keep .s{opacity:0}.pp.keep .h{opacity:1}
+.play .pp.lose .s{animation:fade .35s both;animation-delay:var(--d)}
+.play .pp.lose .h{opacity:1;animation:out .35s both;animation-delay:var(--d)}
+.seven{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,48px);align-items:center;background:var(--white);border:3px solid var(--ink);border-radius:24px;padding:clamp(20px,3vw,36px)}
+.seven>div{min-width:0}
+.big{font-size:clamp(64px,9vw,112px);font-weight:900;line-height:1;letter-spacing:-.05em;color:var(--orange)}
+.big small{font-size:.42em}
+.seven .say{margin-top:14px}
+.swap{margin-top:clamp(36px,5vw,56px);background:var(--orange);color:#fff;border-radius:24px;padding:clamp(24px,4vw,40px);font-size:clamp(26px,3.4vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.3}
+.swap small{display:block;font-size:clamp(15px,1.5vw,18px);font-weight:600;opacity:.95;margin-top:10px;letter-spacing:0}
+
+/* 02 */
+.weeks{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.wk{background:var(--white);border:3px solid var(--ink);border-radius:20px;padding:16px 10px 14px;text-align:center;position:relative;min-width:0}
+.wk.ops{background:var(--lo)}
+.wk>svg{width:64%;max-width:84px;height:auto;display:block;margin:0 auto}
+.wk b{display:block;font-size:13px;color:var(--sub);font-weight:800}
+.wk p{font-size:16px;font-weight:800;margin-top:4px}
+.stamp{position:absolute;top:-12px;right:-10px;width:34px;height:34px;border-radius:50%;background:var(--orange);border:3px solid var(--ink);display:grid;place-items:center}
+.stamp svg{width:18px;height:18px}
+.play .stamp{animation:pop .4s cubic-bezier(.3,1.5,.6,1) both;animation-delay:var(--d)}
+.brace{display:grid;grid-template-columns:4fr 2fr;gap:12px;margin-top:12px;font-size:14px;font-weight:800;text-align:center}
+.brace span{border-top:3px solid var(--ink);padding-top:8px}
+.gate{margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,48px);align-items:center}
+.gate>div{min-width:0}
+.gate>svg{width:clamp(110px,15vw,160px);height:auto}
+.door{transform-box:fill-box;transform-origin:left center;transform:scaleX(.22)}
+.play .door{animation:dooropen .8s ease both;animation-delay:1.9s}
+.gate h3{font-size:clamp(22px,2.6vw,32px);font-weight:900}
+.gate .chips{margin-top:16px}
+
+/* 03 */
+.flow{position:relative;margin-top:clamp(28px,4vw,44px)}
+.flow ol{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative;z-index:1}
+.track{position:absolute;left:12%;right:12%;top:61px;height:6px;border-radius:3px;background:var(--line)}
+.track i{position:absolute;left:0;top:0;height:100%;background:var(--orange);border-radius:3px;width:0;transition:width .7s ease,height .7s ease}
+.fs{text-align:center;min-width:0;cursor:pointer}
+.ic{width:128px;height:128px;border-radius:50%;background:var(--white);border:4px solid var(--ink);display:grid;place-items:center;margin:0 auto;transition:background .35s,transform .35s}
+.ic svg{width:70px;height:70px}
+.ic svg.tall{width:58px;height:78px}
+.fs h3{font-size:21px;font-weight:900;margin-top:16px}
+.fs p{font-size:15px;color:var(--sub);margin-top:4px;font-weight:600}
+.fs.on .ic{background:var(--lo);transform:scale(1.06)}
+.fs.on h3{color:var(--orange)}
+.mover{position:absolute;z-index:2;width:46px;height:36px;left:0;top:0;transition:left .7s ease,top .7s ease;pointer-events:none}
+.flow-ctl{margin-top:20px;text-align:center}
+.flow-ctl button{border:2px solid var(--ink);background:var(--white);border-radius:999px;padding:6px 16px;font-size:13px;font-weight:700;cursor:pointer}
+.lv{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:end}
+.lv>div{min-width:0}
+.lv h3{font-size:clamp(22px,2.6vw,30px);font-weight:900}
+.stacks{display:flex;gap:clamp(16px,3vw,36px);align-items:flex-end}
+.stk{display:flex;flex-direction:column-reverse;align-items:center;gap:4px}
+.stk svg{width:44px;height:33px}
+.stk .cap{display:flex;flex-direction:column;align-items:center;order:-1;margin-top:8px}
+.stk .cap b{font-size:13px;font-weight:900;color:var(--orange)}
+.stk .cap span{font-size:14px;font-weight:800}
+.play .stk svg{animation:up .4s ease both;animation-delay:var(--d)}
+.mine{margin-top:16px}
+
+/* 04 */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.st{background:var(--white);border:3px solid var(--ink);border-radius:20px;padding:18px 16px;min-width:0}
+.st .v{font-size:clamp(34px,4vw,52px);font-weight:900;letter-spacing:-.04em;line-height:1.05}
+.st .v small{font-size:.45em;font-weight:800;margin-left:2px}
+.st .k{font-size:15px;font-weight:800;margin-top:6px}
+.rec{display:flex;gap:clamp(24px,5vw,64px);flex-wrap:wrap;align-items:flex-end}
+.towers{display:flex;align-items:flex-end;gap:clamp(18px,4vw,48px)}
+.tw{display:flex;flex-direction:column-reverse;align-items:center;gap:3px}
+.tw svg{width:44px;height:33px}
+.tw .cap{order:-1;text-align:center;margin-top:10px}
+.tw .cap b{display:block;font-size:20px;font-weight:900;color:var(--orange)}
+.tw .cap span{font-size:13px;font-weight:700;color:var(--sub)}
+.play .tw svg{animation:up .35s ease both;animation-delay:var(--d)}
+.events{display:grid;gap:10px;justify-items:start}
+.events .chip{white-space:normal}
+.legend{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--sub);margin-top:14px}
+.legend svg{width:28px;height:21px}
+.gal{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}
+
+/* 05 */
+.burst{position:relative;width:min(100%,520px);aspect-ratio:13/9;margin:clamp(24px,4vw,40px) auto 0}
+.burst .core{position:absolute;left:31%;top:22%;width:38%;aspect-ratio:1;background:var(--lo);border:4px solid var(--ink);border-radius:50%;display:grid;place-items:center}
+.burst .core svg{width:60%;height:auto}
+.burst .chip{position:absolute;font-size:clamp(14px,2vw,18px)}
+.burst .c1{left:0;top:8%}
+.burst .c2{right:0;top:12%}
+.burst .c3{left:2%;bottom:10%}
+.burst .c4{right:2%;bottom:6%}
+.road{width:100%;height:auto;display:block}
+.road path{stroke-dasharray:var(--len);stroke-dashoffset:0}
+.play .road path{animation:draw 1s ease both;animation-delay:var(--d)}
+.ways{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+.way{background:var(--white);border:3px solid var(--ink);border-radius:20px;padding:18px 14px;text-align:center;min-width:0}
+.way svg{width:72px;height:72px}
+.way h4{font-size:18px;font-weight:900;margin-top:8px;letter-spacing:-.02em}
+.way p{font-size:13px;color:var(--sub);font-weight:600;margin-top:2px}
+.crew{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);align-items:center}
+.crew>div{min-width:0}
+.crowd{display:flex;justify-content:center;align-items:flex-end}
+.crowd svg{width:clamp(56px,9vw,96px);height:auto;margin:0 -6px}
+.crew h3{font-size:clamp(26px,3.2vw,40px);font-weight:900}
+.crew .chips{margin-top:18px}
+
+/* 06 */
+.dx{display:grid;grid-template-columns:1.3fr .7fr;gap:clamp(24px,4vw,48px);margin-top:clamp(24px,4vw,40px);align-items:start}
+.dx>div,.dx>aside{min-width:0}
+.qcard{background:var(--white);border:3px solid var(--ink);border-radius:24px;padding:clamp(22px,3vw,36px);min-height:280px;display:flex;flex-direction:column}
+.dots{display:flex;gap:6px}
+.dots i{width:28px;height:6px;border-radius:3px;background:var(--line)}
+.dots i.done{background:var(--orange)}
+.qn{font-size:13px;font-weight:800;color:var(--orange);margin-top:22px}
+.qt{font-size:clamp(22px,2.6vw,30px);font-weight:900;margin-top:8px;letter-spacing:-.03em;line-height:1.35}
+.yn{display:flex;gap:10px;margin-top:auto;padding-top:24px}
+.yn button{flex:1;height:60px;border:3px solid var(--ink);background:var(--bg);border-radius:16px;cursor:pointer;font-size:19px;font-weight:800}
+.yn button:hover{background:var(--lo)}
+.qback{background:none;border:0;color:var(--sub);font-size:14px;margin-top:12px;cursor:pointer;align-self:flex-start}
+.res h3{font-size:clamp(24px,2.8vw,32px);font-weight:900;margin-top:18px}
+.res p{font-size:16px;color:var(--sub);margin-top:10px;font-weight:600}
+.res .go{margin-top:20px;background:var(--orange);color:#fff;border:3px solid var(--ink);border-radius:999px;padding:14px 24px;font-weight:800;cursor:pointer;font-size:16px}
+.res .again{margin-left:10px;background:none;border:0;color:var(--sub);cursor:pointer;font-size:14px}
+.notfor{display:grid;gap:10px}
+.notfor h3{font-size:18px;font-weight:900;margin-bottom:4px}
+.nf{display:flex;gap:12px;align-items:center;background:var(--white);border:3px solid var(--ink);border-radius:16px;padding:12px 14px;font-weight:800;font-size:15px}
+.nf svg{flex:none;width:28px;height:28px}
+.fit{margin-top:6px;background:var(--orange);color:#fff;border:3px solid var(--ink);border-radius:16px;padding:14px;font-weight:800;font-size:15px}
+
+/* 07 상담 (어두운 폼) */
+.dark{background:var(--char);color:var(--chartext)}
+.ap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,72px);align-items:start}
+.ap>div,.ap>form{min-width:0}
+.ck{list-style:none;margin-top:28px;display:grid;gap:14px}
+.ck li{display:flex;gap:12px;font-size:17px;color:#D6CFC6;line-height:1.5}
+.ck svg{flex:none;width:24px;height:24px;margin-top:1px}
+.dark .legal{color:var(--charsub);border-top:1px solid var(--charline);padding-top:18px;margin-top:32px}
+form{display:grid;gap:12px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{position:relative;min-width:0}
+.field label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.dark select,.dark input[type=text],.dark input[type=tel]{width:100%;height:62px;background:var(--char2);border:1px solid var(--charline);border-radius:12px;color:var(--chartext);font:inherit;font-size:17px;padding:0 20px;appearance:none;-webkit-appearance:none;outline:none;color-scheme:dark}
+.dark select:invalid{color:var(--charsub)}
+.dark option{color:#111;background:#fff}
+.dark input::placeholder{color:var(--charsub)}
+.dark select:focus,.dark input:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(242,107,33,.25)}
+.sel::after{content:"";position:absolute;right:22px;top:50%;width:9px;height:9px;border-right:2px solid #D6CFC6;border-bottom:2px solid #D6CFC6;transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.agree{display:flex;align-items:center;gap:10px;margin-top:6px;font-size:14px;color:#D6CFC6}
+.agree input{width:18px;height:18px;accent-color:var(--orange)}
+.agree button{background:none;border:0;color:var(--charsub);text-decoration:underline;font-size:13px;cursor:pointer;margin-left:auto}
+.submit{margin-top:14px;height:66px;border:0;border-radius:12px;background:var(--orange);color:#fff;font-size:19px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px}
+.submit svg{width:20px;height:20px}
+.submit:hover{filter:brightness(1.07)}
+.submit:disabled{opacity:.6}
+.msg{min-height:22px;text-align:center;font-size:15px;color:var(--orange);margin-top:4px}
+.msg.err{color:#ff9d8f}
+.dark .nav{border-color:var(--charline)}
+.dark .prev{color:var(--charsub)}
+.foot{padding:24px var(--gut) 32px;border-top:1px solid var(--charline);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--charsub);max-width:1180px;margin:0 auto}
+.foot b{color:#D6CFC6}
+
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}
+.modal-box{background:#fff;color:#222;border-radius:6px;max-width:560px;width:100%;padding:34px 32px 28px}
+.modal-box h3{font-size:19px;font-weight:800;margin-bottom:20px}
+.modal-box dl{display:grid;grid-template-columns:92px 1fr;gap:10px 14px;font-size:15px;line-height:1.6}
+.modal-box dt{color:#888}
+.modal-box .close{display:block;margin:26px auto 0;width:124px;height:46px;border:0;background:#ebeae8;font-size:15px;cursor:pointer;border-radius:4px}
+
+/* 반응형 */
+@media (max-width:1080px){
+  .side{display:none}main{margin-left:0}.now{display:block}
+  .stats{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .cta-top{padding:9px 14px;font-size:14px}
+  .hero,.lv,.crew,.dx,.ap{grid-template-columns:1fr}
+  .scene{max-width:300px}
+  .ppl{grid-template-columns:repeat(5,1fr);max-width:280px}
+  .seven{grid-template-columns:1fr;gap:12px}
+  .weeks{grid-template-columns:repeat(3,1fr)}
+  .brace{display:none}
+  .gate{grid-template-columns:96px 1fr;gap:18px}
+  .gate>svg{width:96px}
+  .flow ol{grid-template-columns:1fr;gap:20px}
+  .track{left:61px;right:auto;top:64px;bottom:64px;width:6px;height:auto}
+  .track i{width:100%;height:0}
+  .fs{display:grid;grid-template-columns:128px 1fr;gap:18px;align-items:center;text-align:left}
+  .fs h3{margin-top:0}
+  .gal{grid-template-columns:1fr 1fr}.gal .ph:first-child{grid-column:1/-1}
+  .ways{grid-template-columns:1fr}
+  .way{display:grid;grid-template-columns:64px 1fr;gap:2px 14px;text-align:left;align-items:center}
+  .way svg{grid-row:span 2;width:64px;height:64px}
+  .way h4{margin-top:0}
+  .row2{grid-template-columns:1fr}
+  .next{padding:16px 22px;font-size:17px}
+  .modal-box dl{grid-template-columns:1fr;gap:2px}.modal-box dd{margin-bottom:10px}
+}
+@media (max-width:420px){
+  .ic{width:96px;height:96px}.ic svg{width:54px;height:54px}.ic svg.tall{width:44px;height:60px}
+  .fs{grid-template-columns:96px 1fr}
+  .track{left:45px;top:48px;bottom:48px}
+  .weeks{grid-template-columns:repeat(2,1fr)}
+  .stacks{gap:12px}
+  .burst .chip{padding:6px 12px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+
+<!-- 도형 모음 (구조 애니메이션과 같은 그림체) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="p-body">
+      <path d="M22 158 L22 118 Q22 82 60 82 Q98 82 98 118 L98 158 Z" fill="var(--pb,#FFFFFF)" stroke="#2A2623" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M40 98 L80 98 L82 156 L38 156 Z" fill="var(--pa,#F26B21)" stroke="#2A2623" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="60" cy="48" r="30" fill="#FFFFFF" stroke="#2A2623" stroke-width="5"/>
+      <path d="M30 46 Q32 15 60 16 Q88 15 90 46 Q78 30 60 32 Q42 30 30 46 Z" fill="#2A2623"/>
+      <circle cx="49" cy="52" r="4" fill="#2A2623"/><circle cx="71" cy="52" r="4" fill="#2A2623"/>
+    </g>
+  </defs>
+  <symbol id="p-h" viewBox="0 0 120 160"><use href="#p-body"/><path d="M48 63 Q60 73 72 63" fill="none" stroke="#2A2623" stroke-width="4" stroke-linecap="round"/></symbol>
+  <symbol id="p-s" viewBox="0 0 120 160"><g style="--pb:#E6DDD3;--pa:#B9AFA5"><use href="#p-body"/></g><path d="M48 69 Q60 60 72 69" fill="none" stroke="#2A2623" stroke-width="4" stroke-linecap="round"/></symbol>
+  <symbol id="box" viewBox="0 0 120 90"><rect x="10" y="34" width="100" height="50" rx="7" fill="#FFFFFF" stroke="#2A2623" stroke-width="5"/><rect x="4" y="16" width="112" height="22" rx="7" fill="#F26B21" stroke="#2A2623" stroke-width="5"/></symbol>
+  <symbol id="cal" viewBox="0 0 120 120"><rect x="14" y="22" width="92" height="84" rx="12" fill="#FFFFFF" stroke="#2A2623" stroke-width="5"/><rect x="16.5" y="24.5" width="87" height="20" rx="9" fill="#F26B21"/><path d="M14 46 H106" stroke="#2A2623" stroke-width="5"/><path d="M38 12 V32 M82 12 V32" stroke="#2A2623" stroke-width="6" stroke-linecap="round"/><rect x="30" y="58" width="16" height="14" rx="3" fill="#FFD3B8"/><rect x="52" y="58" width="16" height="14" rx="3" fill="#F26B21" stroke="#2A2623" stroke-width="3"/><rect x="74" y="58" width="16" height="14" rx="3" fill="#FFD3B8"/><rect x="30" y="80" width="16" height="14" rx="3" fill="#FFD3B8"/><rect x="52" y="80" width="16" height="14" rx="3" fill="#FFD3B8"/></symbol>
+  <symbol id="phone" viewBox="0 0 120 120"><rect x="32" y="8" width="56" height="104" rx="12" fill="#FFFFFF" stroke="#2A2623" stroke-width="5"/><rect x="42" y="30" width="36" height="22" rx="6" fill="#F26B21" stroke="#2A2623" stroke-width="3"/><path d="M46 66 H74 M46 78 H66" stroke="#2A2623" stroke-width="4" stroke-linecap="round"/><circle cx="60" cy="98" r="4" fill="#2A2623"/></symbol>
+  <symbol id="pot" viewBox="0 0 120 120"><path d="M42 30 Q36 20 42 12 M60 30 Q54 20 60 12 M78 30 Q72 20 78 12" fill="none" stroke="#F26B21" stroke-width="4" stroke-linecap="round"/><path d="M24 52 H96 V86 Q96 104 78 104 H42 Q24 104 24 86 Z" fill="#FFFFFF" stroke="#2A2623" stroke-width="5" stroke-linejoin="round"/><rect x="18" y="40" width="84" height="12" rx="6" fill="#F26B21" stroke="#2A2623" stroke-width="5"/><path d="M8 64 H24 M96 64 H112" stroke="#2A2623" stroke-width="6" stroke-linecap="round"/></symbol>
+  <symbol id="doc" viewBox="0 0 120 120"><path d="M26 10 H76 L96 30 V110 H26 Z" fill="#FFFFFF" stroke="#2A2623" stroke-width="5" stroke-linejoin="round"/><path d="M40 44 H82 M40 58 H82 M40 72 H66" stroke="#2A2623" stroke-width="4" stroke-linecap="round"/><circle cx="78" cy="90" r="13" fill="#F26B21" stroke="#2A2623" stroke-width="4"/></symbol>
+  <symbol id="coins" viewBox="0 0 120 120"><path d="M22 92 V46 M98 92 V46" stroke="#2A2623" stroke-width="5"/><path d="M22 92 A38 12 0 0 0 98 92" fill="#F26B21" stroke="#2A2623" stroke-width="5"/><rect x="22" y="46" width="76" height="46" fill="#F26B21"/><path d="M22 62 A38 12 0 0 0 98 62 M22 78 A38 12 0 0 0 98 78" fill="none" stroke="#2A2623" stroke-width="4"/><path d="M22 46 V92 M98 46 V92" stroke="#2A2623" stroke-width="5"/><path d="M22 92 A38 12 0 0 0 98 92" fill="none" stroke="#2A2623" stroke-width="5"/><ellipse cx="60" cy="46" rx="38" ry="12" fill="#FFD3B8" stroke="#2A2623" stroke-width="5"/></symbol>
+  <symbol id="shop" viewBox="0 0 200 180"><rect x="22" y="62" width="156" height="108" fill="#FFFFFF" stroke="#2A2623" stroke-width="5"/><path d="M12 36 H188 V62 Q173 76 158 62 Q143 76 128 62 Q114 76 100 62 Q86 76 72 62 Q57 76 42 62 Q27 76 12 62 Z" fill="#F26B21" stroke="#2A2623" stroke-width="5" stroke-linejoin="round"/><rect x="82" y="104" width="36" height="66" fill="#FFD3B8" stroke="#2A2623" stroke-width="5"/><rect x="36" y="88" width="34" height="30" fill="#FFD3B8" stroke="#2A2623" stroke-width="5"/><rect x="130" y="88" width="34" height="30" fill="#FFD3B8" stroke="#2A2623" stroke-width="5"/></symbol>
+  <symbol id="flag" viewBox="0 0 120 120"><ellipse cx="48" cy="110" rx="28" ry="6" fill="#FFD3B8" stroke="#2A2623" stroke-width="4"/><path d="M34 110 V12" stroke="#2A2623" stroke-width="6" stroke-linecap="round"/><path d="M36 16 H96 L84 36 L96 56 H36 Z" fill="#F26B21" stroke="#2A2623" stroke-width="5" stroke-linejoin="round"/></symbol>
+  <symbol id="x" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12" fill="#D63A2F" stroke="#2A2623" stroke-width="2.5"/><path d="M9.5 9.5 L18.5 18.5 M18.5 9.5 L9.5 18.5" stroke="#fff" stroke-width="3" stroke-linecap="round"/></symbol>
+  <symbol id="v" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="none" stroke="#F26B21" stroke-width="1.8"/><path d="M7.5 12.3l3 3 6-6.3" fill="none" stroke="#F26B21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="tick" viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="logo" href="#s1" data-go="1">케닷파트너<i></i></a>
+    <p class="now" id="now"></p>
+    <button class="cta-top" type="button" data-go="7">상담 신청</button>
+  </div>
+  <div class="prog"><span id="prog"></span></div>
+</header>
+
+<nav class="side" aria-label="단계 이동"><ol class="steps" id="steps"></ol></nav>
+
+<main id="main">
+
+<!-- 01 시작 -->
+<section data-step="1" data-name="시작">
+ <div class="stage">
+  <div class="hero">
+   <div>
+    <p class="eyebrow">CADOT PARTNER<span>01 / 07</span></p>
+    <h1 class="h1"><span class="o">8,300만 원</span> 쓰고 나서야<br>안 맞는 걸 안다면?</h1>
+    <p class="say">만두도 먹어보고 사는데,<br>가게는 왜 안 해보고 차릴까요.</p>
+    <p class="src">8,300만 원 · 소상공인 평균 창업비용(2024) · 출처: <a href="https://www.korea.kr/multi/visualNewsView.do?newsId=148960963" target="_blank" rel="noopener">중소벤처기업부 소상공인실태조사</a> · 전 업종 평균</p>
+   </div>
+   <svg class="scene" viewBox="0 0 420 380" role="img" aria-label="돈을 넣은 가게가 문을 닫는 그림">
+    <ellipse cx="210" cy="356" rx="190" ry="16" fill="#FBE7D5"/>
+    <use href="#shop" x="70" y="170" width="200" height="180"/>
+    <g class="shutter">
+     <rect x="92" y="232" width="156" height="108" fill="#B9AFA5" stroke="#2A2623" stroke-width="5"/>
+     <path d="M96 254 H244 M96 276 H244 M96 298 H244 M96 320 H244" stroke="#2A2623" stroke-width="3"/>
+    </g>
+    <g class="closed a-pop"><rect x="120" y="166" width="100" height="40" rx="20" fill="#D63A2F" stroke="#2A2623" stroke-width="5"/><text x="170" y="194" text-anchor="middle" font-size="22" font-weight="900" fill="#fff" font-family="Pretendard,'Noto Sans KR',sans-serif">폐업</text></g>
+    <circle class="coin" style="--d:.2s" cx="130" cy="130" r="20" fill="#F26B21" stroke="#2A2623" stroke-width="5"/>
+    <circle class="coin" style="--d:.55s" cx="175" cy="106" r="20" fill="#F26B21" stroke="#2A2623" stroke-width="5"/>
+    <circle class="coin" style="--d:.9s" cx="215" cy="134" r="20" fill="#F26B21" stroke="#2A2623" stroke-width="5"/>
+    <circle class="coin" style="--d:1.25s" cx="152" cy="150" r="20" fill="#F26B21" stroke="#2A2623" stroke-width="5"/>
+    <use class="sadface" href="#p-s" x="296" y="214" width="100" height="134"/>
+    <use class="happyface" href="#p-h" x="296" y="214" width="100" height="134"/>
+   </svg>
+  </div>
+
+  <div class="seven block">
+   <div class="big num"><span id="c70" data-count="70">70</span><small>%</small></div>
+   <div>
+    <div class="ppl" id="ppl" role="img" aria-label="10명 중 7명"></div>
+    <p class="say">10명 중 7명이 3년 안에 문을 닫았습니다.</p>
+    <p class="src">가치차림 자체 조사 · 이전 창업교육 ‘4평 매장 사장되기’ 수료생 297명 중 연락이 닿은 분 기준 · 평균 투자금 5,300만~5,800만 원</p>
+   </div>
+  </div>
+
+  <div class="swap">그래서 순서를 바꿨습니다.<small>가게 계약 전에, 공유 주방에서 실제 단체주문으로 먼저 사장이 되어봅니다.</small></div>
+
+  <p class="legal">참여 비용이 있으며, 개인별 참여 횟수와 정산액은 다릅니다. 수익을 보장하지 않습니다.</p>
+  <div class="nav"><button class="next" type="button" data-next>어떻게 시작하나요? <svg><use href="#ar"/></svg></button></div>
+ </div>
+</section>
+
+<!-- 02 6주 온보딩 -->
+<section data-step="2" data-name="6주 온보딩" hidden>
+ <div class="stage">
+  <p class="eyebrow">ONBOARDING<span>02 / 07</span></p>
+  <h2 class="h2"><span class="o">6주</span>면, 일할 준비 끝</h2>
+
+  <div class="block">
+   <div class="weeks">
+    <div class="wk a-up" style="--d:.1s"><svg viewBox="0 0 120 120"><use href="#pot"/></svg><b class="num">1주</b><p>레시피</p><span class="stamp" style="--d:.9s"><svg><use href="#tick"/></svg></span></div>
+    <div class="wk a-up" style="--d:.2s"><svg viewBox="0 0 120 120"><use href="#pot"/></svg><b class="num">2주</b><p>레시피</p><span class="stamp" style="--d:1.1s"><svg><use href="#tick"/></svg></span></div>
+    <div class="wk a-up" style="--d:.3s"><svg viewBox="0 0 120 120"><use href="#pot"/></svg><b class="num">3주</b><p>레시피</p><span class="stamp" style="--d:1.3s"><svg><use href="#tick"/></svg></span></div>
+    <div class="wk a-up" style="--d:.4s"><svg viewBox="0 0 120 120"><use href="#pot"/></svg><b class="num">4주</b><p>레시피</p><span class="stamp" style="--d:1.5s"><svg><use href="#tick"/></svg></span></div>
+    <div class="wk ops a-up" style="--d:.5s"><svg viewBox="0 0 120 120"><use href="#phone"/></svg><b class="num">5주</b><p>주문·운영</p><span class="stamp" style="--d:1.7s"><svg><use href="#tick"/></svg></span></div>
+    <div class="wk ops a-up" style="--d:.6s"><svg viewBox="0 0 120 120"><use href="#doc"/></svg><b class="num">6주</b><p>상담·견적</p><span class="stamp" style="--d:1.9s"><svg><use href="#tick"/></svg></span></div>
+   </div>
+   <div class="brace"><span>레시피 4주 · 순서 상관없이</span><span>운영 2주 · 레시피 뒤에</span></div>
+  </div>
+
+  <div class="gate">
+   <svg viewBox="0 0 160 200" aria-hidden="true">
+    <rect x="20" y="20" width="120" height="170" rx="8" fill="#FFD3B8" stroke="#2A2623" stroke-width="5"/>
+    <use href="#box" x="44" y="80" width="72" height="54"/>
+    <rect class="door" x="20" y="20" width="120" height="170" rx="8" fill="#FFFFFF" stroke="#2A2623" stroke-width="5"/>
+    <path d="M10 192 H150" stroke="#2A2623" stroke-width="6" stroke-linecap="round"/>
+   </svg>
+   <div>
+    <h3>6주를 마친 분만 열리는 문</h3>
+    <div class="chips">
+     <span class="chip a-pop" style="--d:2.3s">공유 주방</span>
+     <span class="chip a-pop" style="--d:2.45s">케닷 브랜드</span>
+     <span class="chip or a-pop" style="--d:2.6s">실제 단체주문</span>
+    </div>
+   </div>
+  </div>
+
+  <div class="nav"><button class="prev" type="button" data-prev>이전</button><button class="next" type="button" data-next>수료 후에는요? <svg><use href="#ar"/></svg></button></div>
+ </div>
+</section>
+
+<!-- 03 실전 -->
+<section data-step="3" data-name="실전" hidden>
+ <div class="stage">
+  <p class="eyebrow">HOW IT WORKS<span>03 / 07</span></p>
+  <h2 class="h2">내 가게 없이, <span class="o">이렇게</span> 일해요</h2>
+
+  <div class="flow" id="flow">
+   <div class="track"><i id="trackFill"></i></div>
+   <svg class="mover" id="mover" viewBox="0 0 120 90" aria-hidden="true"><use href="#box"/></svg>
+   <ol>
+    <li class="fs on"><div class="ic"><svg viewBox="0 0 120 120"><use href="#cal"/></svg></div><div><h3>날짜 신청</h3><p>월말에 일할 날을 정해요</p></div></li>
+    <li class="fs"><div class="ic"><svg viewBox="0 0 120 120"><use href="#phone"/></svg></div><div><h3>주문 연결</h3><p>그날 주문이 순서대로</p></div></li>
+    <li class="fs"><div class="ic"><svg class="tall" viewBox="0 0 120 160"><use href="#p-h"/></svg></div><div><h3>만들고 납품</h3><p>장보기는 케닷이 해요</p></div></li>
+    <li class="fs"><div class="ic"><svg viewBox="0 0 120 120"><use href="#coins"/></svg></div><div><h3>정산</h3><p>일한 만큼 받아요</p></div></li>
+   </ol>
+   <div class="flow-ctl"><button type="button" id="flowBtn">멈춤</button></div>
+  </div>
+
+  <div class="lv block">
+   <div>
+    <h3>주문 크기는<br>실력 따라 <span class="o">한 단계씩</span></h3>
+    <div class="chips mine"><span class="chip lo">더 많은 주문은 내 홍보로</span><span class="chip">목요일 마케팅 데이</span></div>
+   </div>
+   <div class="stacks" id="stacks"></div>
+  </div>
+
+  <p class="legal">레벨 기준: 가치차림 운영 기준(2026년 10월). 단체주문은 성수기·비수기가 있어 주문량이 월급처럼 일정하지 않습니다. 정산액은 개인마다 다르며 수익을 보장하지 않습니다.</p>
+  <div class="nav"><button class="prev" type="button" data-prev>이전</button><button class="next" type="button" data-next>실제 기록 보기 <svg><use href="#ar"/></svg></button></div>
+ </div>
+</section>
+
+<!-- 04 운영 기록 -->
+<section data-step="4" data-name="운영 기록" hidden>
+ <div class="stage">
+  <p class="eyebrow">TRACK RECORD<span>04 / 07</span></p>
+  <h2 class="h2">말보다 <span class="o">기록</span>으로</h2>
+
+  <div class="stats block num">
+   <div class="st a-up" style="--d:.05s"><p class="v"><span data-count="3000">3,000</span><small>건</small></p><p class="k">단체주문</p></div>
+   <div class="st a-up" style="--d:.15s"><p class="v"><span data-count="49">49</span><small>명</small></p><p class="k">파트너 대표</p></div>
+   <div class="st a-up" style="--d:.25s"><p class="v"><span data-count="6">6</span><small>곳</small></p><p class="k">지역 협력사</p></div>
+   <div class="st a-up" style="--d:.35s"><p class="v"><span data-count="2">2</span><small>개월</small></p><p class="k">첫 주문까지 평균</p></div>
+  </div>
+  <p class="src">단체주문: 지난 약 10년 누적 · 파트너 대표 49명 중 매달 정산받는 활성 30명 이상 · 협력사: 부산·목포·남양주·연천·평택·일산 · 모두 가치차림 내부 기록, 2026년 10월 기준</p>
+
+  <div class="rec block">
+   <div>
+    <div class="towers" id="towers"></div>
+    <div class="legend"><svg viewBox="0 0 120 90"><use href="#box"/></svg>상자 1개 = 1,000인분</div>
+   </div>
+   <div class="events">
+    <span class="chip a-pop" style="--d:2.4s">2023 · 미 국방부 장관 오찬 도시락</span>
+    <span class="chip a-pop" style="--d:2.55s">2024 · 폴란드 대통령 방한 교민 만찬</span>
+   </div>
+  </div>
+
+  <div class="gal block">
+   <div class="ph"><span>사진 자리 · 6,000인분 함께 만든 현장</span></div>
+   <div class="ph"><span>사진 자리 · 공유 주방</span></div>
+   <div class="ph"><span>사진 자리 · 납품 박스</span></div>
+  </div>
+
+  <div class="nav"><button class="prev" type="button" data-prev>이전</button><button class="next" type="button" data-next>무엇이 남나요? <svg><use href="#ar"/></svg></button></div>
+ </div>
+</section>
+
+<!-- 05 남는 것 -->
+<section data-step="5" data-name="남는 것" hidden>
+ <div class="stage">
+  <p class="eyebrow">WHAT STAYS<span>05 / 07</span></p>
+  <h2 class="h2">가게 없이 <span class="o">먼저 쌓이는 것</span></h2>
+
+  <div class="burst">
+   <div class="core"><svg viewBox="0 0 120 160"><use href="#p-h"/></svg></div>
+   <span class="chip c1 a-pop" style="--d:.4s">마케팅</span>
+   <span class="chip c2 a-pop" style="--d:.6s">상담·견적</span>
+   <span class="chip c3 a-pop" style="--d:.8s">요리 실력</span>
+   <span class="chip or c4 a-pop" style="--d:1s">내 고객</span>
+  </div>
+
+  <div class="block">
+   <svg class="road" viewBox="0 0 600 120" aria-hidden="true">
+    <path d="M300 118 C300 70 100 70 100 6" fill="none" stroke="#2A2623" stroke-width="7" stroke-linecap="round" style="--len:330;--d:1.3s"/>
+    <path d="M300 118 V6" fill="none" stroke="#F26B21" stroke-width="7" stroke-linecap="round" style="--len:120;--d:1.3s"/>
+    <path d="M300 118 C300 70 500 70 500 6" fill="none" stroke="#2A2623" stroke-width="7" stroke-linecap="round" style="--len:330;--d:1.3s"/>
+   </svg>
+   <div class="ways">
+    <div class="way a-up" style="--d:2.1s"><svg viewBox="0 0 120 90"><use href="#box"/></svg><h4>케닷파트너로 계속</h4><p>지금처럼 함께</p></div>
+    <div class="way a-up" style="--d:2.25s"><svg viewBox="0 0 200 180"><use href="#shop"/></svg><h4>내 가게 + 케닷 협력사</h4><p>집 가까운 곳에</p></div>
+    <div class="way a-up" style="--d:2.4s"><svg viewBox="0 0 120 120"><use href="#flag"/></svg><h4>나만의 브랜드</h4><p>배운 메뉴를 가지고</p></div>
+   </div>
+   <p class="src">특허받은 케닷박스 패키지는 케닷 안에서만 쓸 수 있습니다.</p>
+  </div>
+
+  <div class="crew block">
+   <div class="crowd">
+    <svg class="a-up" style="--d:.1s" viewBox="0 0 120 160"><use href="#p-h"/></svg>
+    <svg class="a-up" style="--d:.2s;--pa:#FFD3B8" viewBox="0 0 120 160"><use href="#p-h"/></svg>
+    <svg class="a-up" style="--d:.3s" viewBox="0 0 120 160"><use href="#p-h"/></svg>
+    <svg class="a-up" style="--d:.4s;--pa:#FFD3B8" viewBox="0 0 120 160"><use href="#p-h"/></svg>
+    <svg class="a-up" style="--d:.5s" viewBox="0 0 120 160"><use href="#p-h"/></svg>
+   </div>
+   <div>
+    <h3>혼자가 아니라 <span class="o">함께</span></h3>
+    <div class="chips">
+     <span class="chip">지문으로 드나드는 주방</span>
+     <span class="chip">매달 커피챗</span>
+     <span class="chip">타운홀 미팅</span>
+    </div>
+   </div>
+  </div>
+
+  <div class="nav"><button class="prev" type="button" data-prev>이전</button><button class="next" type="button" data-next>나와 맞는지 보기 <svg><use href="#ar"/></svg></button></div>
+ </div>
+</section>
+
+<!-- 06 무료 진단 -->
+<section data-step="6" data-name="무료 진단" hidden>
+ <div class="stage">
+  <p class="eyebrow">SELF CHECK<span>06 / 07</span></p>
+  <h2 class="h2">나와 <span class="o">맞는지</span> 30초 진단</h2>
+
+  <div class="dx">
+   <div class="qcard" id="qcard" aria-live="polite"></div>
+   <aside class="notfor">
+    <h3>이런 분께는 맞지 않아요</h3>
+    <div class="nf"><svg><use href="#x"/></svg>월급 같은 고정 수입이 필요한 분</div>
+    <div class="nf"><svg><use href="#x"/></svg>짧은 시간에 큰돈을 원하는 분</div>
+    <div class="nf"><svg><use href="#x"/></svg>주문을 기다리기만 하는 분</div>
+    <div class="fit">가게 계약 전, 먼저 해보고 싶은 분께 맞아요</div>
+   </aside>
+  </div>
+
+  <div class="nav"><button class="prev" type="button" data-prev>이전</button><button class="next" type="button" data-next>상담 신청하기 <svg><use href="#ar"/></svg></button></div>
+ </div>
+</section>
+
+<!-- 07 상담 신청 -->
+<section data-step="7" data-name="상담 신청" class="dark" hidden>
+ <div class="stage">
+  <div class="ap">
+   <div>
+    <p class="eyebrow">CADOT PARTNER<span>07 / 07</span></p>
+    <h2 class="h2">가게 계약서에 도장 찍기 전,<br><span class="o">먼저</span> 사장으로 일해보세요.</h2>
+    <ul class="ck">
+     <li><svg><use href="#v"/></svg>레시피 4주 + 운영 2주, 총 6주 온보딩</li>
+     <li><svg><use href="#v"/></svg>수료 후 공유 주방 · 케닷 브랜드 · 실제 단체주문</li>
+     <li><svg><use href="#v"/></svg>신청 다음 날 전화로 직접 연락드립니다</li>
+    </ul>
+    <p class="legal">참여 비용이 있으며, 비용과 환불 기준은 상담 시 계약서로 먼저 안내드립니다. 개인별 참여 횟수와 정산액은 다르며, 수익을 보장하지 않습니다.</p>
+   </div>
+
+   <form id="kpForm" novalidate>
+    <div class="field sel"><label for="f-want">가장 원하는 것</label>
+     <select id="f-want" name="want" required>
+      <option value="" disabled selected>지금 가장 원하시는 것은 무엇인가요?</option>
+      <option>새로운 배움과 성장</option>
+      <option>함께할 동료와 소속</option>
+      <option>가게 차리기 전에 먼저 해보기</option>
+      <option>당장의 수입</option>
+     </select></div>
+    <div class="field sel"><label for="f-stage">창업 준비 단계</label>
+     <select id="f-stage" name="stage" required>
+      <option value="" disabled selected>지금 창업 준비는 어디까지 오셨나요?</option>
+      <option>가게 자리를 보고 있다</option>
+      <option>계약을 앞두고 고민 중이다</option>
+      <option>아이템·방향을 정하는 중이다</option>
+      <option>이미 매장을 운영하고 있다</option>
+      <option>아직 막연히 관심만 있다</option>
+     </select></div>
+    <div class="field sel"><label for="f-budget">자금 규모</label>
+     <select id="f-budget" name="budget" required>
+      <option value="" disabled selected>창업에 생각하신 자금 규모</option>
+      <option>3천만 원 미만</option>
+      <option>3천만 ~ 5천만 원</option>
+      <option>5천만 ~ 1억 원</option>
+      <option>1억 원 이상</option>
+      <option>아직 정하지 않았다</option>
+     </select></div>
+    <div class="row2">
+     <div class="field"><label for="f-name">이름</label><input id="f-name" name="name" type="text" placeholder="이름" autocomplete="name" required></div>
+     <div class="field"><label for="f-phone">휴대폰 번호</label><input id="f-phone" name="phone" type="tel" placeholder="휴대폰 번호" inputmode="numeric" autocomplete="tel" required></div>
+    </div>
+    <div class="field sel"><label for="f-time">통화 편한 시간</label>
+     <select id="f-time" name="time" required>
+      <option value="" disabled selected>통화 편한 시간</option>
+      <option>오전 (10시~12시)</option>
+      <option>오후 (1시~5시)</option>
+      <option>저녁 (6시~8시)</option>
+     </select></div>
+    <label class="agree"><input id="f-agree" type="checkbox" name="agree" required> 개인정보 수집·이용에 동의합니다 <button type="button" id="openPolicy">내용 보기</button></label>
+    <button class="submit" type="submit">무료 상담 신청 <svg><use href="#ar"/></svg></button>
+    <p class="msg" id="msg" aria-live="polite"></p>
+   </form>
+  </div>
+  <div class="nav"><button class="prev" type="button" data-prev>이전</button></div>
+ </div>
+ <footer class="foot"><span><b>주식회사 가치차림</b> · 가게보다 먼저, 경험부터.</span><span>케닷파트너</span></footer>
+</section>
+
+</main>
+
+<div class="modal" id="policy" role="dialog" aria-modal="true" aria-labelledby="pTitle" hidden>
+ <div class="modal-box">
+  <h3 id="pTitle">개인정보 수집 및 이용</h3>
+  <dl>
+   <dt>수집 목적</dt><dd>케닷파트너 상담 연락 및 과정 안내</dd>
+   <dt>수집 항목</dt><dd>이름, 휴대폰 번호 (선택하신 답변: 가장 원하는 것, 창업 준비 단계, 자금 규모, 통화 편한 시간)</dd>
+   <dt>보유 기간</dt><dd>수집일로부터 1년, 또는 삭제 요청 시 즉시 파기</dd>
+   <dt>동의 거부</dt><dd>동의를 거부할 수 있으며, 이 경우 상담 신청이 제한됩니다.</dd>
+  </dl>
+  <button class="close" type="button" id="closePolicy">닫기</button>
+ </div>
+</div>
+
+<script>
+(function(){
+  // ── 상담 신청 저장: '차림인 상담 신청' 구글 폼으로 보냅니다 ──
+  // 미리 채워진 링크에서 확인한 entry 번호를 아래 따옴표 안에 넣으면 연결됩니다.
+  // 번호가 하나라도 비어 있으면 신청을 받지 않고 '준비 중' 안내만 보여줍니다.
+  var GFORM = {
+    action: "https://docs.google.com/forms/d/e/1FAIpQLScBwbItiUOAr9Sbn0hhCUy2zX_ApFcAP67Fk0u9vOXEAw5cZA/formResponse",
+    name:   "",   // 이름
+    phone:  "",   // 전화번호
+    want:   "",   // 지금 가장 원하시는 것은 무엇인가요?
+    time:   "",   // 통화하기 편한 시간
+    agree:  "",   // 개인정보 수집·이용 동의 (보내는 값: 동의합니다.)
+    stage:  "",   // 창업 준비 단계  ← 구글 폼에 새로 추가할 질문
+    budget: ""    // 창업에 생각하신 자금 규모 ← 구글 폼에 새로 추가할 질문
+  };
+  var READY = ['name','phone','want','time','agree','stage','budget'].every(function(k){ return /^\d+$/.test(GFORM[k]); });
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 01: 10명 중 7명
+  var ppl = document.getElementById('ppl'), html = '';
+  for (var i=0;i<10;i++){
+    html += '<div class="pp '+(i<7?'lose':'keep')+'" style="--d:'+(3.4+i*0.18).toFixed(2)+'s"><svg class="h" viewBox="0 0 120 160"><use href="#p-h"/></svg><svg class="s" viewBox="0 0 120 160"><use href="#p-s"/></svg></div>';
+  }
+  ppl.innerHTML = html;
+
+  // 03: 레벨별 상자 쌓기
+  var LV = [['레벨 1','20인분 미만',1],['레벨 2','50인분 미만',2],['레벨 3','100~200인분',5]], sh = '';
+  LV.forEach(function(l,k){
+    var b = '';
+    for (var j=0;j<l[2];j++) b += '<svg viewBox="0 0 120 90" style="--d:'+(0.3+k*0.5+j*0.12).toFixed(2)+'s"><use href="#box"/></svg>';
+    sh += '<div class="stk">'+b+'<div class="cap"><b>'+l[0]+'</b><span>'+l[1]+'</span></div></div>';
+  });
+  document.getElementById('stacks').innerHTML = sh;
+
+  // 04: 인분 탑 (상자 1개 = 1,000인분)
+  var TW = [['2017','서초구청',1,'1,000인분'],['2022','교회 행사',6,'6,000인분'],['2023','대통령 격려품',7,'7,000인분']], th = '', dly = 0.4;
+  TW.forEach(function(t){
+    var b = '';
+    for (var j=0;j<t[2];j++){ b += '<svg viewBox="0 0 120 90" style="--d:'+dly.toFixed(2)+'s"><use href="#box"/></svg>'; dly += 0.1; }
+    th += '<div class="tw">'+b+'<div class="cap"><b class="num">'+t[3]+'</b><span>'+t[0]+' · '+t[1]+'</span></div></div>';
+  });
+  document.getElementById('towers').innerHTML = th;
+
+  // 단계 전환
+  var secs = [].slice.call(document.querySelectorAll('section[data-step]'));
+  var total = secs.length, cur = 1, stepsEl = document.getElementById('steps'), cntTimer = null;
+  secs.forEach(function(s){
+    var n = +s.dataset.step, li = document.createElement('li');
+    li.innerHTML = '<button type="button" data-go="'+n+'"><b>0'+n+'</b>'+s.dataset.name+'</button>';
+    stepsEl.appendChild(li);
+  });
+
+  function countUp(root){
+    root.querySelectorAll('[data-count]').forEach(function(el){
+      var to = +el.dataset.count, t0 = null, dur = 1200;
+      if (reduce){ el.textContent = to.toLocaleString('ko-KR'); return; }
+      el.textContent = '0';
+      function f(ts){ if(!t0) t0 = ts; var p = Math.min(1,(ts-t0)/dur), e = 1-Math.pow(1-p,3);
+        el.textContent = Math.round(to*e).toLocaleString('ko-KR'); if (p<1) requestAnimationFrame(f); }
+      requestAnimationFrame(f);
+    });
+  }
+
+  function show(n, push){
+    n = Math.max(1, Math.min(total, n)); cur = n;
+    secs.forEach(function(s){
+      var on = (+s.dataset.step === n);
+      s.hidden = !on; s.classList.remove('play');
+      if (on && !reduce){ void s.offsetWidth; s.classList.add('play'); }
+    });
+    stepsEl.querySelectorAll('button').forEach(function(b){
+      if (+b.dataset.go === n) b.setAttribute('aria-current','step'); else b.removeAttribute('aria-current');
+    });
+    document.getElementById('now').innerHTML = '<b>0'+n+'</b> / 07 · ' + secs[n-1].dataset.name;
+    document.getElementById('prog').style.width = (n/total*100)+'%';
+    document.body.style.background = n === 7 ? 'var(--char)' : '';
+    document.body.classList.toggle('is-dark', n === 7);
+    if (push !== false){ try { history.replaceState(null,'','#s'+n); } catch(e){} window.scrollTo(0,0); }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({event:'kp_step', step:n});
+    clearTimeout(cntTimer);
+    if (n === 1 && !reduce) cntTimer = setTimeout(function(){ countUp(secs[0].querySelector('.seven')); }, 3400);
+    if (n === 4) countUp(secs[3]);
+    if (n === 3) startFlow(); else stopFlow();
+  }
+
+  document.addEventListener('click', function(e){
+    var g = e.target.closest('[data-go]'); if (g){ e.preventDefault(); show(+g.dataset.go); return; }
+    if (e.target.closest('[data-next]')) show(cur+1);
+    if (e.target.closest('[data-prev]')) show(cur-1);
+  });
+
+  // 03 흐름: 상자가 단계를 따라 이동
+  var flow = document.getElementById('flow'), mover = document.getElementById('mover'),
+      fill = document.getElementById('trackFill'), fss = [].slice.call(flow.querySelectorAll('.fs')),
+      flowBtn = document.getElementById('flowBtn'), fi = 0, timer = null, paused = false;
+  function setFlow(i){
+    fi = i;
+    fss.forEach(function(f,k){ f.classList.toggle('on',k===i); });
+    var ic = fss[i].querySelector('.ic'), r = ic.getBoundingClientRect(), fr = flow.getBoundingClientRect();
+    var vertical = getComputedStyle(flow.querySelector('ol')).gridTemplateColumns.split(' ').length === 1;
+    mover.style.left = (r.left - fr.left + r.width - 34)+'px';
+    mover.style.top = (r.top - fr.top - 10)+'px';
+    var pct = (i/(fss.length-1)*100)+'%';
+    if (vertical){ fill.style.height = pct; fill.style.width = ''; } else { fill.style.width = pct; fill.style.height = ''; }
+  }
+  function startFlow(){
+    stopFlow(); requestAnimationFrame(function(){ setFlow(fi); });
+    if (reduce || paused) return;
+    timer = setInterval(function(){ setFlow((fi+1)%fss.length); }, 1800);
+  }
+  function stopFlow(){ if (timer){ clearInterval(timer); timer = null; } }
+  flowBtn.addEventListener('click', function(){
+    paused = !paused; flowBtn.textContent = paused ? '다시 재생' : '멈춤';
+    if (paused) stopFlow(); else startFlow();
+  });
+  fss.forEach(function(f,k){ f.addEventListener('click', function(){ paused = true; flowBtn.textContent='다시 재생'; stopFlow(); setFlow(k); }); });
+  window.addEventListener('resize', function(){ if (cur===3) setFlow(fi); });
+  if (reduce) flowBtn.parentNode.hidden = true;
+
+  // 06 진단: 한 문항씩
+  var Q = [
+    ['가게를 계약하기 전에, 먼저 해보고 판단하고 싶다', true],
+    ['매달 월급처럼 일정한 수입이 꼭 있어야 한다', false],
+    ['혼자보다 사람들과 함께 일하는 게 좋다', true],
+    ['주문을 기다리기만 하지 않고 직접 홍보해볼 생각이 있다', true],
+    ['정해진 레시피와 운영 기준을 지키며 일할 수 있다', true],
+    ['참여 비용을 생활비와 따로 준비할 수 있다', true]
+  ];
+  var ans = [], card = document.getElementById('qcard');
+  function dots(k){ var h=''; for (var i=0;i<Q.length;i++) h += '<i class="'+(i<k?'done':'')+'"></i>'; return '<div class="dots">'+h+'</div>'; }
+  function ask(){
+    var k = ans.length;
+    if (k >= Q.length) return result();
+    card.innerHTML = dots(k)+'<p class="qn num">'+(k+1)+' / '+Q.length+'</p><p class="qt">'+Q[k][0]+'</p><div class="yn"><button type="button" data-a="1">예</button><button type="button" data-a="0">아니오</button></div>'+(k?'<button class="qback" type="button" data-back>이전 문항</button>':'');
+  }
+  function result(){
+    var miss = Q.map(function(q,i){ return ans[i] !== q[1] ? i : -1; }).filter(function(i){ return i>=0; }), h;
+    if (ans[1] === true || ans[5] === false){
+      h = '<h3>지금은 맞지 않을 수 있어요</h3><p>단체주문은 성수기와 비수기가 있어 수입이 일정하지 않습니다. 고정 수입이 먼저 필요하거나 비용이 생활비에 부담이 된다면, 지금은 권하지 않습니다.</p><button class="go" type="button" data-go="7">그래도 이야기 들어보기</button>';
+    } else if (!miss.length){
+      h = '<h3 class="o">잘 맞는 편이에요</h3><p>먼저 해보고 판단하려는 분, 함께 일하며 직접 움직이려는 분께 맞는 구조입니다.</p><button class="go" type="button" data-go="7">상담 신청하기</button>';
+    } else {
+      h = '<h3>상담에서 함께 확인해봐요</h3><p>'+miss.map(function(i){ return '· '+Q[i][0]; }).join('<br>')+'</p><button class="go" type="button" data-go="7">상담에서 물어보기</button>';
+    }
+    card.innerHTML = dots(Q.length)+'<div class="res">'+h+'<button class="again" type="button" data-again>다시 하기</button></div>';
+  }
+  card.addEventListener('click', function(e){
+    var a = e.target.closest('[data-a]'); if (a){ ans.push(a.dataset.a === '1'); ask(); return; }
+    if (e.target.closest('[data-back]')){ ans.pop(); ask(); return; }
+    if (e.target.closest('[data-again]')){ ans = []; ask(); }
+  });
+  ask();
+
+  // 07 상담 폼
+  var form = document.getElementById('kpForm'), msg = document.getElementById('msg'), modal = document.getElementById('policy');
+  document.getElementById('openPolicy').onclick = function(){ modal.hidden = false; };
+  document.getElementById('closePolicy').onclick = function(){ modal.hidden = true; };
+  modal.onclick = function(e){ if (e.target === modal) modal.hidden = true; };
+  form.phone.addEventListener('input', function(e){
+    var d = e.target.value.replace(/\D/g,'').slice(0,11);
+    e.target.value = d.length < 4 ? d : d.length < 8 ? d.slice(0,3)+'-'+d.slice(3) : d.slice(0,3)+'-'+d.slice(3,7)+'-'+d.slice(7);
+  });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    msg.className = 'msg err';
+    if (!form.want.value || !form.stage.value || !form.budget.value || !form.time.value){ msg.textContent='선택 항목을 모두 골라주세요.'; return; }
+    if (!form.name.value.trim()){ msg.textContent='이름을 입력해주세요.'; return; }
+    if (form.phone.value.replace(/\D/g,'').length < 10){ msg.textContent='휴대폰 번호를 확인해주세요.'; return; }
+    if (!form.agree.checked){ msg.textContent='개인정보 수집·이용에 동의해주세요.'; return; }
+    var btn = form.querySelector('.submit'); btn.disabled = true;
+    var done = function(){
+      msg.className='msg'; msg.textContent='신청이 접수됐습니다. 내일 중으로 직접 연락드리겠습니다.';
+      form.reset(); btn.disabled = false;
+      window.dataLayer.push({event:'kp_submit'});
+    };
+    if (READY){
+      var body = new URLSearchParams();
+      body.append('entry.'+GFORM.name, form.name.value.trim());
+      body.append('entry.'+GFORM.phone, form.phone.value);
+      body.append('entry.'+GFORM.want, form.want.value);
+      body.append('entry.'+GFORM.time, form.time.value);
+      body.append('entry.'+GFORM.agree, '동의합니다.');
+      body.append('entry.'+GFORM.stage, form.stage.value);
+      body.append('entry.'+GFORM.budget, form.budget.value);
+      fetch(GFORM.action,{method:'POST',mode:'no-cors',body:body}).then(done).catch(function(){
+        msg.textContent='전송에 실패했습니다. 잠시 후 다시 시도해주세요.'; btn.disabled=false;
+      });
+    } else {
+      // 저장 주소가 연결되기 전에는 접수된 것처럼 보이지 않게 한다
+      msg.textContent='온라인 신청 접수를 준비하고 있습니다. 잠시 후 다시 시도해주세요.'; btn.disabled=false;
+    }
+  });
+
+  var m = /^#s([1-7])$/.exec(location.hash);
+  show(m ? +m[1] : 1, false);
+})();
+</script>
+
+</body>
+</html>
