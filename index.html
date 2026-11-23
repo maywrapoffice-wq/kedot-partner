@@ -484,7 +484,7 @@ form{display:grid;gap:12px}
   <div class="bar-in">
     <a class="logo" href="#s1" data-go="1">케닷파트너<i></i></a>
     <p class="now" id="now"></p>
-    <button class="snd" id="snd" type="button" aria-pressed="true" aria-label="효과음 끄기" title="효과음"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path class="w" d="M16 9.5a3.5 3.5 0 0 1 0 5M18.5 7a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="m" d="M16.5 9.5l5 5m0-5l-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <button class="snd" id="snd" type="button" aria-pressed="true" aria-label="소리 끄기" title="배경음악·효과음 (희망차게, 함께라면)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path class="w" d="M16 9.5a3.5 3.5 0 0 1 0 5M18.5 7a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="m" d="M16.5 9.5l5 5m0-5l-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <button class="cta-top" type="button" data-go="7">상담 신청</button>
   </div>
   <div class="prog"><span id="prog"></span></div>
@@ -955,9 +955,35 @@ form{display:grid;gap:12px}
     return api;
   })();
   var sndBtn = document.getElementById('snd');
-  function paintSnd(){ var v = SND.isOn(); sndBtn.setAttribute('aria-pressed', v ? 'true' : 'false'); sndBtn.setAttribute('aria-label', v ? '효과음 끄기' : '효과음 켜기'); }
+  function paintSnd(){ var v = SND.isOn(); sndBtn.setAttribute('aria-pressed', v ? 'true' : 'false'); sndBtn.setAttribute('aria-label', v ? '소리 끄기' : '소리 켜기'); }
   paintSnd();
-  sndBtn.addEventListener('click', function(){ SND.set(!SND.isOn()); paintSnd(); if (SND.isOn()) SND.tap(); });
+  sndBtn.addEventListener('click', function(){ SND.set(!SND.isOn()); paintSnd(); if (SND.isOn()){ SND.tap(); BGM.play(); } else BGM.stop(); });
+
+  // 배경음악: 브라우저가 자동 재생을 막으므로 첫 터치·클릭 때 시작, 소리 버튼을 끄면 멈춤
+  var BGM = (function(){
+    var a = null, started = false, fadeT = null, TARGET = 0.6;
+    function el(){
+      if (!a){ a = new Audio('audio/bgm.mp3'); a.loop = true; a.preload = 'none'; a.volume = 0; }
+      return a;
+    }
+    function fade(to, ms, after){
+      clearInterval(fadeT); var x = el(), from = x.volume, n = 0, steps = Math.max(1, Math.round(ms/50));
+      fadeT = setInterval(function(){ n++; try { x.volume = Math.max(0, Math.min(1, from + (to-from)*n/steps)); } catch(e){} if (n >= steps){ clearInterval(fadeT); if (after) after(); } }, 50);
+    }
+    return {
+      play: function(){
+        if (!SND.isOn() || document.hidden) return;
+        var x = el(); started = true;
+        var p = x.play(); if (p && p.catch) p.catch(function(){ started = false; });
+        fade(TARGET, 2500);
+      },
+      stop: function(){ if (!a) return; fade(0, 600, function(){ a.pause(); }); },
+      started: function(){ return started; }
+    };
+  })();
+  function bgmKick(){ if (!BGM.started()) BGM.play(); }
+  ['pointerdown','keydown','touchstart'].forEach(function(ev){ document.addEventListener(ev, bgmKick, {passive:true}); });
+  document.addEventListener('visibilitychange', function(){ if (document.hidden) BGM.stop(); else if (BGM.started()) BGM.play(); });
   var userTouched = false;
   function cue(n){
     SND.clear();
