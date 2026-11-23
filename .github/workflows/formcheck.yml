@@ -1,0 +1,17 @@
+name: formcheck
+on: push
+permissions:
+  contents: write
+jobs:
+  f:
+    if: contains(github.event.head_commit.message, '[formcheck]')
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -sL "https://docs.google.com/forms/d/e/1FAIpQLScBwbItiUOAr9Sbn0hhCUy2zX_ApFcAP67Fk0u9vOXEAw5cZA/viewform" -o page.html
+          python3 -c "
+          import re,json
+          s=open('page.html',encoding='utf-8').read()
+          d=json.loads(re.search(r'FB_PUBLIC_LOAD_DATA_ = (.*?);</script>',s,re.S).group(1))
+          print('RESULT', json.dumps([[q[1].strip()[:15], e[2]] for q in d[1][1] for e in (q[4] or [])], ensure_ascii=False))
+          "
